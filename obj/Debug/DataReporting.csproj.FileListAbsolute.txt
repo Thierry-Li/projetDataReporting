@@ -1,14 +1,33 @@
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting.csprojAssemblyReference.cache
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\App.g.cs
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting_MarkupCompile.cache
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting_MarkupCompile.lref
-C:\Users\MSI Game\source\repos\DataReporting\bin\Debug\DataReporting.exe.config
-C:\Users\MSI Game\source\repos\DataReporting\bin\Debug\DataReporting.exe
-C:\Users\MSI Game\source\repos\DataReporting\bin\Debug\DataReporting.pdb
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting.g.resources
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting.Properties.Resources.resources
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting.csproj.GenerateResource.cache
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting.exe
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\DataReporting.pdb
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\MainWindow.g.cs
-C:\Users\MSI Game\source\repos\DataReporting\obj\Debug\MainWindow.baml
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting.csprojAssemblyReference.cache
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/App.g.cs
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting_MarkupCompile.cache
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting_MarkupCompile.lref
+C:/Users/MSI Game/source/repos/DataReporting/bin/Debug/DataReporting.exe.config
+C:/Users/MSI Game/source/repos/DataReporting/bin/Debug/DataReporting.exe
+C:/Users/MSI Game/source/repos/DataReporting/bin/Debug/DataReporting.pdb
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting.g.resources
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting.Properties.Resources.resources
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting.csproj.GenerateResource.cache
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting.exe
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/DataReporting.pdb
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/MainWindow.g.cs
+C:/Users/MSI Game/source/repos/DataReporting/obj/Debug/MainWindow.baml
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/bin/Debug/DataReporting.exe.config
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/bin/Debug/DataReporting.exe
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/bin/Debug/DataReporting.pdb
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.csprojAssemblyReference.cache
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/MainWindow.g.cs
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/App.g.cs
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting_MarkupCompile.cache
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting_MarkupCompile.lref
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/MainWindow.baml
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.g.resources
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.Properties.Resources.resources
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.csproj.GenerateResource.cache
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.exe
+Y:/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.pdb
+/Users/thierry/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.csprojAssemblyReference.cache
+/Users/thierry/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.Properties.Resources.resources
+/Users/thierry/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.csproj.GenerateResource.cache
+/Users/thierry/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.exe
+/Users/thierry/OneDrive - Association Cesi Viacesi mail/CESI/projet4-CSHARP/projetDataReporting/obj/Debug/DataReporting.pdb

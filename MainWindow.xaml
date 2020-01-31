@@ -9,8 +9,8 @@
 
     <Grid>
         <ListBox Name="listBox" HorizontalAlignment="Left" Height="300" Margin="250,100,0,0" VerticalAlignment="Top" Width="300"/>
-        <Button Name="BTNLoad" Click="loadClick" Content="LOAD" HorizontalAlignment="Left" Height="51" Margin="335,31,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="BTNDelete" Click="loadValue" Content="LOAD" HorizontalAlignment="Left" Height="51" Margin="616,209,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button Name="BTNLoad" Click="loadClick" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="335,31,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button x:Name="BTNDelete" Click="loadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="616,209,0,0" VerticalAlignment="Top" Width="135"/>
     </Grid>
 
 

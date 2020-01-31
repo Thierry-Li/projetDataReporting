@@ -34,7 +34,7 @@ namespace DataReporting
             Stream myStream;
             OpenFileDialog ofc = new OpenFileDialog();
             ofc.RestoreDirectory = true;
-            ofc.InitialDirectory = @"D:\TOTO";  //Chemin dossier à importer
+            ofc.InitialDirectory = @"Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\txt";  //Chemin dossier à importer
             if (ofc.ShowDialog() == true)
             {
 
