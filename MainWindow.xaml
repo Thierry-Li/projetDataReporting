@@ -1,0 +1,18 @@
+﻿<Window x:Class="DataReporting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataReporting"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <ListBox Name="listBox" HorizontalAlignment="Left" Height="300" Margin="250,100,0,0" VerticalAlignment="Top" Width="300"/>
+        <Button Name="BTNLoad" Click="loadClick" Content="LOAD" HorizontalAlignment="Left" Height="51" Margin="335,31,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button x:Name="BTNDelete" Click="loadValue" Content="LOAD" HorizontalAlignment="Left" Height="51" Margin="616,209,0,0" VerticalAlignment="Top" Width="135"/>
+    </Grid>
+
+
+
+</Window>
