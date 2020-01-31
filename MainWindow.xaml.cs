@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace DataReporting
 {
@@ -71,6 +72,31 @@ namespace DataReporting
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Data Source=THIERRYLI6676;Initial Catalog=dataReport;User ID=sa;Password=azerty";
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
+            //MessageBox.Show("Connection Open  !");
+            //cnn.Close();
+
+            SqlCommand command;
+            SqlDataReader datareader;
+            String sql,Output = "";
+            sql = "Select numeroSerie, libelle from capteur";
+            command = new SqlCommand(sql, cnn);
+            datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
+                Output = Output + datareader.GetValue(0) + " - " + datareader.GetString(1) + "\n";
+            }
+            MessageBox.Show(Output);
+            datareader.Close();
+            command.Dispose();
+            cnn.Close();
+        }
     }
 }
 
