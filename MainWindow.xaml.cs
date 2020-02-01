@@ -79,8 +79,6 @@ namespace DataReporting
             connetionString = @"Data Source=THIERRYLI6676;Initial Catalog=dataReport;User ID=sa;Password=azerty";
             cnn = new SqlConnection(connetionString);
             cnn.Open();
-            //MessageBox.Show("Connection Open  !");
-            //cnn.Close();
 
             SqlCommand command;
             SqlDataReader datareader;
