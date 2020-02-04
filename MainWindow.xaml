@@ -8,10 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <ListBox Name="listBox" HorizontalAlignment="Left" Height="300" Margin="250,100,0,0" VerticalAlignment="Top" Width="300"/>
-        <Button Name="BTNLoad" Click="loadClick" Content="LOAD" HorizontalAlignment="Left" Height="51" Margin="335,31,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="BTNDelete" Click="loadValue" Content="LOAD" HorizontalAlignment="Left" Height="51" Margin="616,209,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button x:Name="BTNGO" Click="GOTO" Content="OK" HorizontalAlignment="Left" Height="51" Margin="330,300,0,0" VerticalAlignment="Top" Width="135"/>
+        <ListBox HorizontalAlignment="Left" Height="150" Margin="239,100,0,0" VerticalAlignment="Top" Width="320"/>
+        <Label Content="Selcetionnez l'ID capteur :" HorizontalAlignment="Left" Height="39" Margin="280,27,0,0" VerticalAlignment="Top" Width="240" FontSize="20"/>
+        <Button x:Name="BTNco" Click="Connexion" Content="Conexion" HorizontalAlignment="Left" Height="51" Margin="500,300,0,0" VerticalAlignment="Top" Width="135"/>
     </Grid>
+    
+    
+
+    
 
 
 

@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
+
 
 namespace DataReporting
 {
@@ -28,46 +30,21 @@ namespace DataReporting
         }
 
         //Import Dossier TXT
-        private void loadClick(object sender, RoutedEventArgs e)
+       
+
+        private void GOTO(object sender, EventArgs e)
         {
+            Vue.Window2 v2 = new Vue.Window2();
+            v2.Show();
 
-            Stream myStream;
-            OpenFileDialog ofc = new OpenFileDialog();
-            ofc.RestoreDirectory = true;
-            ofc.InitialDirectory = @"D:\TOTO";  //Chemin dossier à importer
-            if (ofc.ShowDialog() == true)
-            {
 
-                if ((myStream = ofc.OpenFile()) != null)
-                {
-                    string str = ofc.FileName;
 
-                    string filetxt = File.ReadAllText(str); //recupération du contenue du fichier TXT
-
-                    try
-                    {
-
-                        try
-                        {
-                            string[] lines = File.ReadAllLines(str);
-                            foreach (string line in lines)
-                            {
-                                listBox.Items.Add(line); //Conversion TEXT en LIST
-
-                            }
-                        }
-                        catch { }
-                    }
-                    catch { }
-                }
-            }
         }
 
-        //Fonction DELETE
-        private void loadValue(object sender, EventArgs e)
+        private void Connexion(object sender, EventArgs e)
         {
-            listBox.Items.RemoveAt(listBox.SelectedIndex);
-            
+            Model.Program connexion = new Model.Program();
+            connexion.Start();
 
         }
 
