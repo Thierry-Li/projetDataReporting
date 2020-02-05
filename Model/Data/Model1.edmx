@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dataReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="capteur">
+          <Key>
+            <PropertyRef Name="idCapteur" />
+          </Key>
+          <Property Name="idCapteur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroSerie" Type="int" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="releve">
+          <Key>
+            <PropertyRef Name="idReleve" />
+          </Key>
+          <Property Name="idReleve" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateReleve" Type="date" />
+          <Property Name="heureReleve" Type="time" Precision="7" />
+          <Property Name="temperature" Type="float" />
+          <Property Name="hygrometrie" Type="float" />
+          <Property Name="idCapteur" Type="int" />
+        </EntityType>
+        <Association Name="fk_idCapteur_idCapteur">
+          <End Role="capteur" Type="Self.capteur" Multiplicity="0..1" />
+          <End Role="releve" Type="Self.releve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="capteur">
+              <PropertyRef Name="idCapteur" />
+            </Principal>
+            <Dependent Role="releve">
+              <PropertyRef Name="idCapteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dataReportModelStoreContainer">
+          <EntitySet Name="capteur" EntityType="Self.capteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="releve" EntityType="Self.releve" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_idCapteur_idCapteur" Association="Self.fk_idCapteur_idCapteur">
+            <End Role="capteur" EntitySet="capteur" />
+            <End Role="releve" EntitySet="releve" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dataReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="capteur">
+          <Key>
+            <PropertyRef Name="idCapteur" />
+          </Key>
+          <Property Name="idCapteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroSerie" Type="Int32" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="releve" Relationship="Self.fk_idCapteur_idCapteur" FromRole="capteur" ToRole="releve" />
+        </EntityType>
+        <EntityType Name="releve">
+          <Key>
+            <PropertyRef Name="idReleve" />
+          </Key>
+          <Property Name="idReleve" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateReleve" Type="DateTime" Precision="0" />
+          <Property Name="heureReleve" Type="Time" Precision="7" />
+          <Property Name="temperature" Type="Double" />
+          <Property Name="hygrometrie" Type="Double" />
+          <Property Name="idCapteur" Type="Int32" />
+          <NavigationProperty Name="capteur" Relationship="Self.fk_idCapteur_idCapteur" FromRole="releve" ToRole="capteur" />
+        </EntityType>
+        <Association Name="fk_idCapteur_idCapteur">
+          <End Role="capteur" Type="Self.capteur" Multiplicity="0..1" />
+          <End Role="releve" Type="Self.releve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="capteur">
+              <PropertyRef Name="idCapteur" />
+            </Principal>
+            <Dependent Role="releve">
+              <PropertyRef Name="idCapteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dataReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="capteur" EntityType="Self.capteur" />
+          <EntitySet Name="releve" EntityType="Self.releve" />
+          <AssociationSet Name="fk_idCapteur_idCapteur" Association="Self.fk_idCapteur_idCapteur">
+            <End Role="capteur" EntitySet="capteur" />
+            <End Role="releve" EntitySet="releve" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dataReportModelStoreContainer" CdmEntityContainer="dataReportEntities">
+          <EntitySetMapping Name="capteur">
+            <EntityTypeMapping TypeName="dataReportModel.capteur">
+              <MappingFragment StoreEntitySet="capteur">
+                <ScalarProperty Name="idCapteur" ColumnName="idCapteur" />
+                <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="releve">
+            <EntityTypeMapping TypeName="dataReportModel.releve">
+              <MappingFragment StoreEntitySet="releve">
+                <ScalarProperty Name="idReleve" ColumnName="idReleve" />
+                <ScalarProperty Name="dateReleve" ColumnName="dateReleve" />
+                <ScalarProperty Name="heureReleve" ColumnName="heureReleve" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="hygrometrie" ColumnName="hygrometrie" />
+                <ScalarProperty Name="idCapteur" ColumnName="idCapteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

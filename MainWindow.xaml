@@ -9,10 +9,22 @@
 
     <Grid Margin="0,0,0.5,2.5">
         <ListBox Name="listBox" HorizontalAlignment="Left" Height="420" Margin="25,100,0,0" VerticalAlignment="Top" Width="330"/>
-        <Button Name="BTNLoad" Click="loadClick" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="105,35,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="BTNDelete" Click="loadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="55,545,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button Name="BTNLoad" Click="LoadClick" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="105,35,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button x:Name="BTNDelete" Click="LoadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="55,545,0,0" VerticalAlignment="Top" Width="135"/>
         <Button Content="ButtonConnect" HorizontalAlignment="Left" Height="51" Margin="600,100,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="490,50,0,0" VerticalAlignment="Top" Width="330" Height="25"/>
+        <DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="490,295,0,0" VerticalAlignment="Top" Width="225">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
+                <DataGridTextColumn Header="Numéro de série" Binding="{Binding NumeroSerie}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nom de capteur" Binding="{Binding Libelle}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="495,535,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
+        <TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="735,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="735,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+        <Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="735,390,0,0" VerticalAlignment="Top" Width="110" Click="AddTest_click"/>
     </Grid>
 
 

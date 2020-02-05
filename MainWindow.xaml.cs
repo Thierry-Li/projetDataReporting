@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using DataReporting.Model.Business;
+using DataReporting.Model.Service;
 
 namespace DataReporting
 {
@@ -26,10 +28,11 @@ namespace DataReporting
         public MainWindow()
         {
             InitializeComponent();
+            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
         }
 
         //Import Dossier TXT
-        private void loadClick(object sender, RoutedEventArgs e)
+        private void LoadClick(object sender, RoutedEventArgs e)
         {
 
             Stream myStream;
@@ -65,7 +68,7 @@ namespace DataReporting
         }
 
         //Fonction DELETE
-        private void loadValue(object sender, EventArgs e)
+        private void LoadValue(object sender, EventArgs e)
         {
             listBox.Items.RemoveAt(listBox.SelectedIndex);
             
@@ -94,6 +97,26 @@ namespace DataReporting
             datareader.Close();
             command.Dispose();
             cnn.Close();
+        }
+
+        private void DeleteTest_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var capteurARetirer = gridTest.SelectedItem as BusinessCapteur;
+            ServiceCapteur.DeleteCapteur(capteurARetirer);
+            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+        }
+
+        private void AddTest_click(object sender, RoutedEventArgs e)
+        {
+            BusinessCapteur nouveauCapteur = new BusinessCapteur
+            {
+                NumeroSerie = int.Parse(fieldNumero.Text),
+                Libelle = fieldLibelle.Text
+            };
+            ServiceCapteur.AddCapteur(nouveauCapteur);
+            MessageBox.Show("Capteur ajouté");
+            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
         }
     }
 }
