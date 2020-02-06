@@ -1,0 +1,46 @@
+﻿<Window x:Class="Projet4.Vue.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projet4.Vue"
+        mc:Ignorable="d"
+        Title="Home" 
+        Height="450" 
+        Width="800" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Background="Gray" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5">
+            <StackPanel>
+                <Button Name="BTNselect" Content="Select" HorizontalAlignment="Left" Height="40" Margin="15,20,0,0" VerticalAlignment="Top" Width="100" Click="CBTNselect"/>
+                <Button x:Name="BTNdelete" Content="Delete" HorizontalAlignment="Left" Height="40" Margin="15,30,0,0" VerticalAlignment="Top" Width="100" Click="CBTNdelete"/>
+                <Button x:Name="BTNpdf" Content="Generate PDF" HorizontalAlignment="Left" Height="40" Margin="15,30,0,0" VerticalAlignment="Top" Width="100" Click="CBTNpdf"/>
+                <Button Name="BTNback" Content="Retour" HorizontalAlignment="Left" Height="40" Margin="15,150,0,0" VerticalAlignment="Top" Width="100" Click="CBTNback"/>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel Background="White" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="5">
+            <StackPanel>
+                <ListBox Margin="25,25,0,0" Height="370" Width="600" Name="listBox" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+            </StackPanel>
+        </DockPanel>
+
+
+    </Grid>
+</Window>
