@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="70cac9182d9a45119f84e54952565f44" Name="Diagram1">
         <EntityTypeShape EntityType="DataReportingModel.Capteur" Width="1.5" PointX="3.125" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataReportingModel.Sensor" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

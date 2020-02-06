@@ -12,15 +12,8 @@
           <Property Name="ID_Cap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="3" />
         </EntityType>
-        <EntityType Name="Sensor">
-          <Key>
-            <PropertyRef Name="ID_Capteur" />
-          </Key>
-          <Property Name="ID_Capteur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="DataReportingModelStoreContainer">
           <EntitySet Name="Capteur" EntityType="Self.Capteur" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sensor" EntityType="Self.Sensor" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -35,14 +28,7 @@
         </EntityType>
         <EntityContainer Name="DataReportingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Capteur" EntityType="Self.Capteur" />
-          <EntitySet Name="Sensor" EntityType="DataReportingModel.Sensor" />
         </EntityContainer>
-        <EntityType Name="Sensor">
-          <Key>
-            <PropertyRef Name="ID_Capteur" />
-          </Key>
-          <Property Name="ID_Capteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -54,13 +40,6 @@
               <MappingFragment StoreEntitySet="Capteur">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID_Cap" ColumnName="ID_Cap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sensor">
-            <EntityTypeMapping TypeName="DataReportingModel.Sensor">
-              <MappingFragment StoreEntitySet="Sensor">
-                <ScalarProperty Name="ID_Capteur" ColumnName="ID_Capteur" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

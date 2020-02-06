@@ -14,6 +14,7 @@ namespace Projet4.Vue
         public Home()
         {
             InitializeComponent();
+
             
         }
 
@@ -23,49 +24,7 @@ namespace Projet4.Vue
         private void CBTNdelete(object sender, EventArgs e)
         {
             listBox.Items.RemoveAt(listBox.SelectedIndex);
-        }
-        //Fonction SHOW
-        private void CBTNselect(object sender, EventArgs e) 
-        {
-
-            Stream myStream;
-            OpenFileDialog ofc = new OpenFileDialog();
-            ofc.RestoreDirectory = true;
-            ofc.InitialDirectory = @"D:\TOTO";  //Chemin dossier à importer
-            if (ofc.ShowDialog() == true)
-            {
-
-                if ((myStream = ofc.OpenFile()) != null)
-                {
-                    string str = ofc.FileName;
-
-                    //envois du repertoire:
-                    Model.GetRep.Vone = str;
-
-
-                    string filetxt = File.ReadAllText(str); //recupération du contenue du fichier TXT
-
-                    try
-                    {
-
-                        try
-                        {
-                            string[] lines = File.ReadAllLines(str);
-                            foreach (string line in lines)
-                            {
-                                listBox.Items.Add(line); //Conversion TEXT en LIST
-
-                            }
-                        }
-                        catch { }
-                    }
-                    catch { }
-                }
-            }
-        }
-
-        
-        
+        }        
 
         //BACK BUTTON-----------------------------------------------
         private void CBTNback(object sender, RoutedEventArgs e)

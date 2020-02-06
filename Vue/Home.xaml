@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
         <DockPanel Background="Gray" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5">
             <StackPanel>
-                <Button Name="BTNselect" Content="Select" HorizontalAlignment="Left" Height="40" Margin="15,20,0,0" VerticalAlignment="Top" Width="100" Click="CBTNselect"/>
+                
                 <Button x:Name="BTNdelete" Content="Delete" HorizontalAlignment="Left" Height="40" Margin="15,30,0,0" VerticalAlignment="Top" Width="100" Click="CBTNdelete"/>
                 <Button x:Name="BTNpdf" Content="Generate PDF" HorizontalAlignment="Left" Height="40" Margin="15,30,0,0" VerticalAlignment="Top" Width="100" Click="CBTNpdf"/>
                 <Button Name="BTNback" Content="Retour" HorizontalAlignment="Left" Height="40" Margin="15,150,0,0" VerticalAlignment="Top" Width="100" Click="CBTNback"/>

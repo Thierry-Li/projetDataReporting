@@ -26,6 +26,5 @@ namespace Projet4.Model.DATA
         }
     
         public virtual DbSet<Capteur> Capteur { get; set; }
-        public virtual DbSet<Sensor> Sensor { get; set; }
     }
 }
