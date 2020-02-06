@@ -7,11 +7,21 @@
     <Schema Namespace="DataReportingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Capteur">
           <Key>
-            <PropertyRef Name="ID_Cap" />
+            <PropertyRef Name="idcapteur" />
           </Key>
-          <Property Name="ID_Cap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="3" />
+          <Property Name="idcapteur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroSerie" Type="varchar" MaxLength="3" />
+          <Property Name="libelle" Type="nvarchar(max)" />
         </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'DataReporting.dbo.Releve' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
+        <EntityType Name="Releve">
+          <Property Name="idReleve" Type="int" />
+          <Property Name="dateLigne" Type="date" />
+          <Property Name="heureLigne" Type="time" Precision="7" />
+          <Property Name="temperatureLigne" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hygrometrieLigne" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>-->
         <EntityContainer Name="DataReportingModelStoreContainer">
           <EntitySet Name="Capteur" EntityType="Self.Capteur" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -22,9 +32,13 @@
         <EntityType Name="Capteur">
           <Key>
             <PropertyRef Name="ID_Cap" />
+            <PropertyRef Name="idcapteur" />
           </Key>
           <Property Name="ID_Cap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="idcapteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroSerie" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DataReportingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Capteur" EntityType="Self.Capteur" />
@@ -38,8 +52,9 @@
           <EntitySetMapping Name="Capteur">
             <EntityTypeMapping TypeName="DataReportingModel.Capteur">
               <MappingFragment StoreEntitySet="Capteur">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID_Cap" ColumnName="ID_Cap" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
+                <ScalarProperty Name="idcapteur" ColumnName="idcapteur" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

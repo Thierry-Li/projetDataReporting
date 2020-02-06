@@ -14,8 +14,10 @@ namespace Projet4.Vue
         public Home()
         {
             InitializeComponent();
+            Model.FillTableCapteur fill = new Model.FillTableCapteur();
 
-            
+
+
         }
 
         //LIST TXT---------------------------------------------------------

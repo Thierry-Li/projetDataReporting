@@ -16,5 +16,8 @@ namespace Projet4.Model.DATA
     {
         public int ID_Cap { get; set; }
         public string Name { get; set; }
+        public int idcapteur { get; set; }
+        public string numeroSerie { get; set; }
+        public string libelle { get; set; }
     }
 }
