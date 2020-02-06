@@ -10,17 +10,17 @@
         Width="800"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Button Name="BTNconnexion" Width="200" Height="50" Margin="300,300,0,0" Content="OK" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNconnexion" />
+        <Button Name="BTNconnexion" Width="200" Height="50" Margin="400,350,0,0" Content="VALIDER" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNvalider" />
+        <Button Name="BTNselect" Width="200" Height="50" Margin="400,50,0,0" Content="SELECT" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNselect" />
 
-        
-        <DataGrid AutoGenerateColumns="False" Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="285,50,0,0" VerticalAlignment="Top" Width="225" SelectionChanged="gridTest_SelectionChanged" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" IsReadOnly="True" >
-            <DataGrid.Columns>                
-                <DataGridTextColumn Header="ID Capteur" Binding="{Binding ID_Cap}"/> 
+
+        <DataGrid AutoGenerateColumns="False" Name="gridTest" HorizontalAlignment="Left" Height="380" Margin="20,20,0,0" VerticalAlignment="Top" Width="225" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Capteur" Binding="{Binding ID_Cap}"/>
                 <DataGridTextColumn Header="Nom Capteur" Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Name="yolo" HorizontalAlignment="Left" Height="50" Margin="70,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
-        
+
     </Grid>
-    
+
 </Window>
