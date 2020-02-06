@@ -124,6 +124,7 @@
     <Compile Include="Model\Data\releve.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Service\CheckIntegrity.cs" />
     <Compile Include="Model\Service\ServiceCapteur.cs" />
     <Compile Include="Model\Service\ServiceReleve.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

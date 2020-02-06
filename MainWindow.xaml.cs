@@ -1,123 +1,159 @@
-﻿using Microsoft.Win32;
-using System.IO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Data.SqlClient;
-using DataReporting.Model.Business;
+﻿using DataReporting.Model.Business;
 using DataReporting.Model.Service;
+using Microsoft.Win32;
+using System;
+using System.Data.SqlClient;
+using System.IO;
+using System.Windows;
+using System.Collections;
 
 namespace DataReporting
 {
-    /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
-        }
+	/// <summary>
+	/// Logique d'interaction pour MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
+		}
 
-        //Import Dossier TXT
-        private void LoadClick(object sender, RoutedEventArgs e)
-        {
+		//Import Dossier TXT
 
-            Stream myStream;
-            OpenFileDialog ofc = new OpenFileDialog();
-            ofc.RestoreDirectory = true;
-            ofc.InitialDirectory = @"Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\txt";  //Chemin dossier à importer
-            if (ofc.ShowDialog() == true)
-            {
+		private void ChargerFichier_Click(object sender, RoutedEventArgs e)
+		{
+			Stream myStream;
+			OpenFileDialog ofc = new OpenFileDialog
+			{
+				RestoreDirectory = true,
+				InitialDirectory = @"Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\txt"
+			};
+			if (ofc.ShowDialog() == true)
+			{
+				if ((myStream = ofc.OpenFile()) != null)
+				{
+					string str = ofc.FileName;
+					string filetxt = File.ReadAllText(str); //recupération du contenue du fichier TXT
 
-                if ((myStream = ofc.OpenFile()) != null)
-                {
-                    string str = ofc.FileName;
+					try
+					{
+						string[] lines = File.ReadAllLines(str);
+						foreach (string line in lines)
+						{
+							//CheckIntegrity.CheckLinesIntegrity(line);
+							listBoxReleve.Items.Add(line);
+							//string[] categorieDeReleve = line.Split(' ');
+							//foreach (string champdeReleve in categorieDeReleve)
+							//{
+							//	char indexReleve = champdeReleve[0];
+							//	//string dateTime = Convert.ToDateTime(champdeReleve[1]);
+							//	//TimeSpan timeSpan = TimeSpan.TryParse(champdeReleve[2]);
+							//	BusinessReleve releveAEnregistrer = new BusinessReleve();
+							//	//ReleveAEnregistrer.DateReleve = DateTime.Parse(char.ToString(champdeReleve[1]));
+							//
+							//	releveAEnregistrer.DateReleve = Convert.ToDateTime(champdeReleve[1]);
+							//	//MessageBox.Show(ReleveAEnregistrer.DateReleve.ToString());
+							//};
 
-                    string filetxt = File.ReadAllText(str); //recupération du contenue du fichier TXT
+						}
+					}
+					catch
+					{
 
-                    try
-                    {
+					}
+				}
+			}
 
-                        try
-                        {
-                            string[] lines = File.ReadAllLines(str);
-                            foreach (string line in lines)
-                            {
-                                listBox.Items.Add(line); //Conversion TEXT en LIST
+		}
+		/*
+		private void ChargerFichier_Click(object sender, RoutedEventArgs e)
+		{
+			Stream myStream;
+			OpenFileDialog ofc = new OpenFileDialog
+			{
+				RestoreDirectory = true,
+				InitialDirectory = @"Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\txt" 
+			};
+			if (ofc.ShowDialog() == true)
+			{
+				if ((myStream = ofc.OpenFile()) != null)
+				{
+					string str = ofc.FileName;
+					string filetxt = File.ReadAllText(str); //recupération du contenue du fichier TXT
 
-                            }
-                        }
-                        catch { }
-                    }
-                    catch { }
-                }
-            }
-        }
+					try
+					{
+						string[] lines = File.ReadAllLines(str);
+						foreach (string line in lines)
+						{
+							listBoxReleve.Items.Add(line);
+							//string[] categorieDeReleve = line.Split(' ');
+							//foreach (string champdeReleve in categorieDeReleve)
+							//{
+							//	char indexReleve = champdeReleve[0];
+							//	//string dateTime = Convert.ToDateTime(champdeReleve[1]);
+							//	//TimeSpan timeSpan = TimeSpan.TryParse(champdeReleve[2]);
+							//	BusinessReleve releveAEnregistrer = new BusinessReleve();
+							//	//ReleveAEnregistrer.DateReleve = DateTime.Parse(char.ToString(champdeReleve[1]));
+							//
+							//	releveAEnregistrer.DateReleve = Convert.ToDateTime(champdeReleve[1]);
+							//	//MessageBox.Show(ReleveAEnregistrer.DateReleve.ToString());
+							//};
+							
+						}
+					}
+					catch
+					{
+						
+					}
+				}
+			}
+		}
+		*/
 
-        //Fonction DELETE
-        private void LoadValue(object sender, EventArgs e)
-        {
-            listBox.Items.RemoveAt(listBox.SelectedIndex);
-            
 
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Data Source=THIERRYLI6676;Initial Catalog=dataReport;User ID=sa;Password=azerty";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
 
-            SqlCommand command;
-            SqlDataReader datareader;
-            String sql,Output = "";
-            sql = "Select numeroSerie, libelle from capteur";
-            command = new SqlCommand(sql, cnn);
-            datareader = command.ExecuteReader();
-            while (datareader.Read())
-            {
-                Output = Output + datareader.GetValue(0) + " - " + datareader.GetString(1) + "\n";
-            }
-            MessageBox.Show(Output);
-            datareader.Close();
-            command.Dispose();
-            cnn.Close();
-        }
 
-        private void DeleteTest_Click(object sender, RoutedEventArgs e)
-        {
-            
-            var capteurARetirer = gridTest.SelectedItem as BusinessCapteur;
-            ServiceCapteur.DeleteCapteur(capteurARetirer);
-            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
-        }
+		//Fonction DELETE
+		private void LoadValue(object sender, EventArgs e)
+		{
+			listBoxReleve.Items.RemoveAt(listBoxReleve.SelectedIndex);
+		}
 
-        private void AddTest_click(object sender, RoutedEventArgs e)
-        {
-            BusinessCapteur nouveauCapteur = new BusinessCapteur
-            {
-                NumeroSerie = int.Parse(fieldNumero.Text),
-                Libelle = fieldLibelle.Text
-            };
-            ServiceCapteur.AddCapteur(nouveauCapteur);
-            MessageBox.Show("Capteur ajouté");
-            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
-        }
-    }
+		private void DeleteTest_Click(object sender, RoutedEventArgs e)
+		{
+			var capteurARetirer = gridTest.SelectedItem as BusinessCapteur;
+			ServiceCapteur.DeleteCapteur(capteurARetirer);
+			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+		}
+
+		private void AddTest_click(object sender, RoutedEventArgs e)
+		{
+			BusinessCapteur nouveauCapteur = new BusinessCapteur
+			{
+				NumeroSerie = int.Parse(fieldNumero.Text),
+				Libelle = fieldLibelle.Text
+			};
+			ServiceCapteur.AddCapteur(nouveauCapteur);
+			MessageBox.Show("Capteur ajouté");
+			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+		}
+
+		private void SaveReleveToBDD(object sender, RoutedEventArgs e)
+		{
+		
+
+		}
+
+		private void BtnEnleverLigne_Click(object sender, RoutedEventArgs e)
+		{
+			var releveARetirer = gridFromBdd.SelectedItem as BusinessReleve;
+			ServiceReleve.DeleteReleve(releveARetirer);
+			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
+		}
+	}
 }
-

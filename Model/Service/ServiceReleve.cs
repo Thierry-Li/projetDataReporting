@@ -31,6 +31,35 @@ namespace DataReporting.Model.Service
 			return result;
 		}
 
+		public static void DeleteReleve(BusinessReleve businessReleve)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var releveRecupere = ctx.releve.Where(r => r.idReleve == businessReleve.IdReleve).FirstOrDefault();
+			//var releveRecupere = ctx.capteur.Include("capteur").Where(c => c.idCapteur == businessReleve.IdReleve).FirstOrDefault();
+
+			//ctx.releve.RemoveRange(releveRecupere.releve);
+			ctx.releve.Remove(releveRecupere);
+
+			ctx.SaveChanges();
+		}
+
+		public static releve AddReleve(BusinessReleve businessReleve)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var releve = new releve
+			{
+				dateReleve = businessReleve.DateReleve,
+				heureReleve = businessReleve.HeureReleve,
+				temperature = businessReleve.Temperature,
+				hygrometrie = businessReleve.Hygrometrie
+			};
+
+			ctx.releve.Add(releve);
+
+			ctx.SaveChanges();
+			return releve;
+		}
+
 	}
 
 }

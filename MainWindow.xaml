@@ -8,23 +8,43 @@
         Title="MainWindow" Height="740" Width="927.5">
 
     <Grid Margin="0,0,0.5,2.5">
-        <ListBox Name="listBox" HorizontalAlignment="Left" Height="420" Margin="25,100,0,0" VerticalAlignment="Top" Width="330"/>
-        <Button Name="BTNLoad" Click="LoadClick" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="105,35,0,0" VerticalAlignment="Top" Width="135"/>
+        <ListBox x:Name="listBoxReleve" HorizontalAlignment="Left" Height="420" Margin="25,100,0,0" VerticalAlignment="Top" Width="335"/>
+
+        <Button x:Name="BtnChargerFichier" Click="ChargerFichier_Click" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="105,35,0,0" VerticalAlignment="Top" Width="135"/>
+
         <Button x:Name="BTNDelete" Click="LoadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="55,545,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button Content="ButtonConnect" HorizontalAlignment="Left" Height="51" Margin="600,100,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click"/>
-        <ComboBox HorizontalAlignment="Left" Margin="490,50,0,0" VerticalAlignment="Top" Width="330" Height="25"/>
-        <DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="490,295,0,0" VerticalAlignment="Top" Width="225">
+
+        <DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="470,432,0,0" VerticalAlignment="Top" Width="240" IsReadOnly="True">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
-                <DataGridTextColumn Header="Numéro de série" Binding="{Binding NumeroSerie}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Numéro de série" Binding="{Binding NumeroSerie}" Width="Auto" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Nom de capteur" Binding="{Binding Libelle}"></DataGridTextColumn>
-
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="495,535,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
-        <TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="735,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
-        <TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="735,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
-        <Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="735,390,0,0" VerticalAlignment="Top" Width="110" Click="AddTest_click"/>
+
+        <Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="735,477,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
+
+        <TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="470,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+
+        <TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="600,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+
+        <Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="735,650,0,0" VerticalAlignment="Top" Width="95" Click="AddTest_click"/>
+
+        <Button Content="Enregistrer relevé" HorizontalAlignment="Left" Margin="225,545,0,0" VerticalAlignment="Top" Width="115" Height="51" Click="SaveReleveToBDD"/>
+
+        <DataGrid  AutoGenerateColumns="False" x:Name="gridFromBdd" HorizontalAlignment="Center" Height="270" Margin="368,77,0,0" VerticalAlignment="Center" Width="544" IsReadOnly="True" GridLinesVisibility="None" SelectionMode="Single" >
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
+                <DataGridTextColumn Header="Date" Binding="{Binding DateReleve}" Width="160" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Heure" Binding="{Binding HeureReleve}" Width="80" ></DataGridTextColumn>
+                <DataGridTextColumn Header="température du relevé" Binding="{Binding Temperature}" Width="Auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Hygrométrie du relevé" Binding="{Binding Hygrometrie}" Width="Auto" ></DataGridTextColumn>
+                <!--<DataGridTextColumn Header="Nom de capteur" Binding="{Binding Libelle}" Width="Auto" ></DataGridTextColumn>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <Button x:Name="BtnGenerer" Content="Generer rapport" HorizontalAlignment="Left" Margin="420,372,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnEnleverLigne"  Content="Enlever ligne du rapport" HorizontalAlignment="Left" Margin="600,372,0,0" VerticalAlignment="Top" Width="75" Click="BtnEnleverLigne_Click"/>
     </Grid>
 
 

@@ -27,6 +27,7 @@ namespace DataReporting.Model.Service
 			}).ToList();
 			return result;
 		}
+		
 
 		public static void DeleteCapteur(BusinessCapteur businessCapteur)
 		{
