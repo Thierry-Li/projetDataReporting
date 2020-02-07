@@ -8,6 +8,7 @@ using System.Windows;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace DataReporting
 {
@@ -20,9 +21,11 @@ namespace DataReporting
 		{
 			InitializeComponent();
 			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
-			gridFromBdd.ItemsSource = ServiceLigneReleve.GetLignesReleve();
+			//gridFromBdd.ItemsSource = ServiceLigneReleve.GetLignesReleve();
+			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
 			List<BusinessReleve> Releves= ServiceReleve.GetReleve();
 
+			
 
 			List<int> RowIndexes = new List<int>();
 			var SelectedItemsCount = gridFromBdd.SelectedItems;
@@ -173,7 +176,14 @@ namespace DataReporting
 
 		private void SaveReleveToBDD(object sender, RoutedEventArgs e)
 		{
+			var cell = gridTest.SelectedIndex;
 		
+			List<string> listDeReleve = new List<string>();
+			foreach (var item in listBoxReleve.Items)
+			{
+				listDeReleve.Add(item.ToString());
+			}
+
 
 		}
 

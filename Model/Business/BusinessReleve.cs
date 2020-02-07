@@ -9,6 +9,7 @@ namespace DataReporting.Model.Business
         [Key]
         public int IdReleve { get; set; }
         public int CapteurID { get; set; }
+        public DateTime DateReleve { get; set; }
         public virtual BusinessCapteur Capteur { get; set; }
         public virtual List<BusinessLigneReleve> LigneReleves { get; set; }
 

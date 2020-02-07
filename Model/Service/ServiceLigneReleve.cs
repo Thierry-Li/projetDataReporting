@@ -16,8 +16,8 @@ namespace DataReporting.Model.Service
 			var result = ctx.ligneReleve.Select(r => new BusinessLigneReleve
 			{
 				IdLigneReleve = r.idLigneReleve,
-				DateLigneReleve = r.dateReleve,
-				HeureLigneReleve = r.heureReleve,
+				DateLigneReleve = r.dateLigneReleve,
+				HeureLigneReleve = r.heureLigneReleve,
 				Temperature = r.temperature,
 				Hygrometrie = r.hygrometrie,
 				ReleveID = r.releveID,
@@ -33,31 +33,33 @@ namespace DataReporting.Model.Service
 			var result = ctx.ligneReleve.Select(r => new BusinessLigneReleve()
 			{
 				IdLigneReleve = r.idLigneReleve,
-				HeureLigneReleve = r.heureReleve,
+				HeureLigneReleve = r.heureLigneReleve,
 				Temperature = r.temperature,
 				Hygrometrie = r.hygrometrie,
-				DateLigneReleve = r.dateReleve,
+				DateLigneReleve = r.dateLigneReleve,
 				ReleveID = r.releveID
 
 			}).Where(ligneReleve => ligneReleve.ReleveID == releveId).ToList();
 			return result;
 		}
 
-		public static BusinessReleve AddLigneReleve(BusinessReleve businessReleve)
+		public static void AddLignesReleve(List<BusinessLigneReleve> businessLignesReleve, int idReleve)
 		{
 			dataReportEntities ctx = new dataReportEntities();
-			var releve = new BusinessReleve
+			foreach (var ligne in businessLignesReleve)
 			{
-				//dateReleve = businessReleve.DateReleve,
-				//heureReleve = businessReleve.HeureReleve,
-				//temperature = businessReleve.Temperature,
-				//hygrometrie = businessReleve.Hygrometrie
-			};
+				var ligneReleve = new ligneReleve
+				{
 
-			//ctx.releve.Add(releve);
+					dateLigneReleve = ligne.DateLigneReleve,
+					heureLigneReleve = ligne.HeureLigneReleve,
+					temperature = ligne.Temperature,
+					hygrometrie = ligne.Hygrometrie,
+					releveID = idReleve
+				};
+			}
 
 			ctx.SaveChanges();
-			return releve;
 		}
 
 		public static void DeleteLigneReleve(BusinessReleve businessReleve)

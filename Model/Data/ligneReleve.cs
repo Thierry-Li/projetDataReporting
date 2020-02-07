@@ -15,11 +15,11 @@ namespace DataReporting.Model.Data
     public partial class ligneReleve
     {
         public int idLigneReleve { get; set; }
-        public System.DateTime dateReleve { get; set; }
-        public System.TimeSpan heureReleve { get; set; }
         public double temperature { get; set; }
         public double hygrometrie { get; set; }
         public int releveID { get; set; }
+        public System.DateTime dateLigneReleve { get; set; }
+        public System.TimeSpan heureLigneReleve { get; set; }
     
         public virtual releve releve { get; set; }
     }

@@ -22,6 +22,7 @@ namespace DataReporting.Model.Data
     
         public int idReleve { get; set; }
         public int capteurID { get; set; }
+        public System.DateTime dateReleve { get; set; }
     
         public virtual capteur capteur { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

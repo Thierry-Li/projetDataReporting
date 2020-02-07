@@ -14,7 +14,7 @@
 
 		<Button x:Name="BTNDelete" Click="LoadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="55,545,0,0" VerticalAlignment="Top" Width="135"/>
 
-		<DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="470,432,0,0" VerticalAlignment="Top" Width="240" IsReadOnly="True">
+		<DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="378,10,0,0" VerticalAlignment="Top" Width="240" IsReadOnly="True">
 			<DataGrid.Columns>
 				<!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
 				<DataGridTextColumn Header="Numéro de série" Binding="{Binding NumeroSerie}" Width="Auto" ></DataGridTextColumn>
@@ -22,17 +22,17 @@
 			</DataGrid.Columns>
 		</DataGrid>
 
-		<Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="735,477,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
+		<Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="795,10,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
 
-		<TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="470,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+		<TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="640,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
 
-		<TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="600,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+		<TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="640,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
 
-		<Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="735,650,0,0" VerticalAlignment="Top" Width="95" Click="AddTest_click"/>
+		<Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="780,125,0,0" VerticalAlignment="Top" Width="95" Click="AddTest_click"/>
 
 		<Button Content="Enregistrer relevé" HorizontalAlignment="Left" Margin="225,545,0,0" VerticalAlignment="Top" Width="115" Height="51" Click="SaveReleveToBDD"/>
 
-		<DataGrid  AutoGenerateColumns="False" x:Name="gridFromBdd" HorizontalAlignment="Left" Height="270" Margin="368,77,0,0" VerticalAlignment="Top" Width="544" IsReadOnly="True" GridLinesVisibility="None" >
+		<DataGrid  AutoGenerateColumns="False" x:Name="gridFromBdd" HorizontalAlignment="Left" Height="270" Margin="365,340,0,0" VerticalAlignment="Top" Width="544" IsReadOnly="True" GridLinesVisibility="None" >
 			<DataGrid.Columns>
 				<!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
 				<DataGridTextColumn Header="Date" Binding="{Binding DateLigneReleve}" Width="160" ></DataGridTextColumn>
@@ -44,11 +44,14 @@
 			</DataGrid.Columns>
 		</DataGrid>
 		
-		<Button x:Name="BtnGenerer" Content="Generer rapport" HorizontalAlignment="Left" Margin="420,372,0,0" VerticalAlignment="Top" Width="75"/>
-		<Button x:Name="BtnEnleverLigne"  Content="Enlever ligne du rapport" HorizontalAlignment="Left" Margin="600,372,0,0" VerticalAlignment="Top" Width="75" Click="BtnEnleverLigne_Click"/>
-		<Label x:Name="moyenne" Content="Moyenne : " HorizontalAlignment="Left" Margin="695,369,0,0" VerticalAlignment="Top"/>
-		<TextBox x:Name="moyenneField" HorizontalAlignment="Left" Height="23" Margin="764,372,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-	</Grid>
+		<Button x:Name="BtnGenerer" Content="Generer rapport" HorizontalAlignment="Left" Margin="378,640,0,0" VerticalAlignment="Top" Width="75"/>
+		<Button x:Name="BtnEnleverLigne"  Content="Enlever ligne du rapport" HorizontalAlignment="Left" Margin="470,640,0,0" VerticalAlignment="Top" Width="75" Click="BtnEnleverLigne_Click"/>
+		<Label x:Name="moyenne" Content="Moyenne : " HorizontalAlignment="Left" Margin="565,640,0,0" VerticalAlignment="Top"/>
+		<TextBox x:Name="moyenneField" HorizontalAlignment="Left" Height="23" Margin="640,643,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
+        <DataGrid x:Name="gridReleve" HorizontalAlignment="Left" Height="100" Margin="378,225,0,0" VerticalAlignment="Top" Width="167"/>
+        <Button Content="select releve" HorizontalAlignment="Left" Height="50" Margin="590,255,0,0" VerticalAlignment="Top" Width="96"/>
+    </Grid>
 
 
 

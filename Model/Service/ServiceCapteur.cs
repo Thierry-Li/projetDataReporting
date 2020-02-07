@@ -26,6 +26,17 @@ namespace DataReporting.Model.Service
 			}).ToList();
 			return result;
 		}
+		public static BusinessCapteur GetCapteurByNumeroSerie(int numSerie)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var capteur = ctx.capteur.Select(c => new BusinessCapteur {
+				IdCapteur = c.idCapteur,
+				NumeroSerie = c.numeroSerie,
+				Libelle = c.libelle
+			}).Where(c => c.NumeroSerie == numSerie).FirstOrDefault();
+			
+			return capteur;
+		}
 		
 		public static void DeleteCapteur(BusinessCapteur businessCapteur)
 		{
