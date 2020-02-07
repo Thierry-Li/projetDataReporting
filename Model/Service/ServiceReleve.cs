@@ -61,6 +61,7 @@ namespace DataReporting.Model.Service
 			var releve = new releve
 			{
 				capteurID = businessReleve.CapteurID,
+				dateReleve = DateTime.Now
 			};
 
 			ctx.releve.Add(releve);

@@ -9,6 +9,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
+using System.Text.RegularExpressions;
+using System.Collections.ObjectModel;
 
 namespace DataReporting
 {
@@ -20,39 +22,29 @@ namespace DataReporting
 		public MainWindow()
 		{
 			InitializeComponent();
-			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+
+
+			ObservableCollection<BusinessCapteur> capteurs =  new ObservableCollection<BusinessCapteur>(ServiceCapteur.GetCapteur() as List<BusinessCapteur>);
+			gridTest.ItemsSource = capteurs;
+
 			//gridFromBdd.ItemsSource = ServiceLigneReleve.GetLignesReleve();
 			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
 			List<BusinessReleve> Releves= ServiceReleve.GetReleve();
 
+
 			
 
-			List<int> RowIndexes = new List<int>();
-			var SelectedItemsCount = gridFromBdd.SelectedItems;
 
-			BusinessReleve businessReleve = new BusinessReleve();
-			//var temperature = businessReleve.Temperature.Where(t => selectedItems.Any(selectedItems => t.temperature == selectedItems.temperature));
+		}
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
 
-			//for (int i = 0; i <= SelectedItemsCount; i++)
-			//{
-			//	RowIndexes.Add(gridFromBdd.Items.IndexOf(gridFromBdd.Items[i]));
-			//}
-			//List<float> temperatures = new List<float>();
-			//foreach (int index in RowIndexes)
-			//{
-			//	temperatures.Add(index);
-			//}
-			//float average = temperatures.Average();
-			//moyenneField.AppendText(average.ToString());
-
-			//float AverageTemperature()
-			//{
-			//	foreach (float temperature in temperatures)
-			//	{
-			//
-			//	}
-			//}
-
+			var cellCapteur = gridTest.SelectedItem;
+			gridTest.SelectedCells.Clear();
+			//ItemsControl.ItemsSource
+			gridTest.Items.Remove(cellCapteur);
+			/*BusinessCapteur businessCapteur = (BusinessCapteur)cellCapteur.Item;
+			businessCapteur*/
 		}
 
 		//Import Dossier TXT
@@ -176,15 +168,32 @@ namespace DataReporting
 
 		private void SaveReleveToBDD(object sender, RoutedEventArgs e)
 		{
-			var cell = gridTest.SelectedIndex;
+			var cellInfo = gridTest.SelectedCells[0];
+			BusinessCapteur businessCapteur = (BusinessCapteur)cellInfo.Item;
+			int capteurId = businessCapteur.IdCapteur;
+			BusinessReleve businessReleve = new BusinessReleve();
+			businessReleve.CapteurID = capteurId;
+
+			int idReleve = ServiceReleve.AddReleve(businessReleve);
 		
-			List<string> listDeReleve = new List<string>();
+			List<BusinessLigneReleve> lignesReleve = new List<BusinessLigneReleve>();
 			foreach (var item in listBoxReleve.Items)
 			{
-				listDeReleve.Add(item.ToString());
+				string[] list = Regex.Split(item.ToString(), @"\s+");
+
+				BusinessLigneReleve businessLigneReleve = new BusinessLigneReleve();
+				businessLigneReleve.DateLigneReleve = DateTime.Parse(list[1]);
+				businessLigneReleve.HeureLigneReleve = TimeSpan.Parse(list[2]);
+				businessLigneReleve.Temperature = double.Parse(list[3].Replace(".", ","));
+				businessLigneReleve.Hygrometrie = double.Parse(list[4].Remove(list[4].Length - 1).Replace("." , ","));
+				businessLigneReleve.ReleveID = idReleve;
+				lignesReleve.Add(businessLigneReleve);
+
+
 			}
 
-
+			ServiceLigneReleve.AddLignesReleve(lignesReleve);
+			MessageBox.Show("yeah");
 		}
 
 		private void BtnEnleverLigne_Click(object sender, RoutedEventArgs e)
@@ -193,5 +202,7 @@ namespace DataReporting
 			ServiceLigneReleve.DeleteLigneReleve(releveARetirer);
 			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
 		}
+
+		
 	}
 }

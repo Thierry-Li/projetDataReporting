@@ -43,7 +43,7 @@ namespace DataReporting.Model.Service
 			return result;
 		}
 
-		public static void AddLignesReleve(List<BusinessLigneReleve> businessLignesReleve, int idReleve)
+		public static void AddLignesReleve(List<BusinessLigneReleve> businessLignesReleve)
 		{
 			dataReportEntities ctx = new dataReportEntities();
 			foreach (var ligne in businessLignesReleve)
@@ -55,8 +55,10 @@ namespace DataReporting.Model.Service
 					heureLigneReleve = ligne.HeureLigneReleve,
 					temperature = ligne.Temperature,
 					hygrometrie = ligne.Hygrometrie,
-					releveID = idReleve
+					releveID = ligne.ReleveID
 				};
+				ctx.ligneReleve.Add(ligneReleve);
+
 			}
 
 			ctx.SaveChanges();

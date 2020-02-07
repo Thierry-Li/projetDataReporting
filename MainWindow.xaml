@@ -51,6 +51,7 @@
         
         <DataGrid x:Name="gridReleve" HorizontalAlignment="Left" Height="100" Margin="378,225,0,0" VerticalAlignment="Top" Width="167"/>
         <Button Content="select releve" HorizontalAlignment="Left" Height="50" Margin="590,255,0,0" VerticalAlignment="Top" Width="96"/>
+        <Button Content="del capteur" HorizontalAlignment="Left" Height="25" Margin="640,25,0,0" VerticalAlignment="Top" Width="60" Click="Button_Click"/>
     </Grid>
 
 
