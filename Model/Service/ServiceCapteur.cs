@@ -15,14 +15,6 @@ namespace DataReporting.Model.Service
 				IdCapteur = c.idCapteur,
 				NumeroSerie = c.numeroSerie,
 				Libelle = c.libelle
-				//Releve = c.releve.Select(r => new BusinessReleve 
-				//{ 
-				//	IdReleve = r.idReleve,
-				//	DateReleve = r.dateReleve,
-				//	HeureReleve = r.heureReleve,
-				//	Temperature = (float) r.temperature,
-				//	Hygrometrie = (float) r.hygrometrie
-				//}).FirstOrDefault()
 			}).ToList();
 			return result;
 		}
@@ -37,6 +29,8 @@ namespace DataReporting.Model.Service
 			
 			return capteur;
 		}
+		
+		//TODO DeleteCapteur qui doit delete les releves associés?
 		
 		public static void DeleteCapteur(BusinessCapteur businessCapteur)
 		{

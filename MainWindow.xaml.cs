@@ -28,26 +28,14 @@ namespace DataReporting
 			gridTest.ItemsSource = capteurs;
 
 			//gridFromBdd.ItemsSource = ServiceLigneReleve.GetLignesReleve();
-			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
-			List<BusinessReleve> Releves= ServiceReleve.GetReleve();
-
-
-			
-
+			gridFromBdd.ItemsSource = ServiceLigneReleve.GetLignesReleve();
+			gridReleve.ItemsSource = ServiceReleve.GetReleve();
+			ComboBoxSelectCapteur.ItemsSource = ServiceCapteur.GetCapteur().ToString();
 
 		}
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
+		
 
-			var cellCapteur = gridTest.SelectedItem;
-			gridTest.SelectedCells.Clear();
-			//ItemsControl.ItemsSource
-			gridTest.Items.Remove(cellCapteur);
-			/*BusinessCapteur businessCapteur = (BusinessCapteur)cellCapteur.Item;
-			businessCapteur*/
-		}
-
-		//Import Dossier TXT
+		// Import fichier TXT
 
 		private void ChargerFichier_Click(object sender, RoutedEventArgs e)
 		{
@@ -140,13 +128,39 @@ namespace DataReporting
 		}
 		*/
 
-
-		//Fonction DELETE
-		private void LoadValue(object sender, EventArgs e)
+		private void BtnSupprimerLigne(object sender, EventArgs e)
 		{
 			listBoxReleve.Items.RemoveAt(listBoxReleve.SelectedIndex);
 		}
 
+		private void SaveReleveToBDD(object sender, RoutedEventArgs e)
+		{
+			var cellInfo = gridTest.SelectedCells[0];
+			BusinessCapteur businessCapteur = (BusinessCapteur)cellInfo.Item;
+			int capteurId = businessCapteur.IdCapteur;
+			BusinessReleve businessReleve = new BusinessReleve();
+			businessReleve.CapteurID = capteurId;
+
+			int idReleve = ServiceReleve.AddReleve(businessReleve);
+
+			List<BusinessLigneReleve> lignesReleve = new List<BusinessLigneReleve>();
+			foreach (var item in listBoxReleve.Items)
+			{
+				string[] list = Regex.Split(item.ToString(), @"\s+");
+
+				BusinessLigneReleve businessLigneReleve = new BusinessLigneReleve();
+				businessLigneReleve.DateLigneReleve = DateTime.Parse(list[1]);
+				businessLigneReleve.HeureLigneReleve = TimeSpan.Parse(list[2]);
+				businessLigneReleve.Temperature = double.Parse(list[3].Replace(".", ","));
+				businessLigneReleve.Hygrometrie = double.Parse(list[4].Remove(list[4].Length - 1).Replace(".", ","));
+				businessLigneReleve.ReleveID = idReleve;
+				lignesReleve.Add(businessLigneReleve);
+			}
+			ServiceLigneReleve.AddLignesReleve(lignesReleve);
+			MessageBox.Show("yeah");
+		}
+
+		// Capteur
 		private void DeleteTest_Click(object sender, RoutedEventArgs e)
 		{
 			var capteurARetirer = gridTest.SelectedItem as BusinessCapteur;
@@ -166,36 +180,19 @@ namespace DataReporting
 			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
 		}
 
-		private void SaveReleveToBDD(object sender, RoutedEventArgs e)
+		private void BtnSupprLigneCapteur(object sender, RoutedEventArgs e)
 		{
-			var cellInfo = gridTest.SelectedCells[0];
-			BusinessCapteur businessCapteur = (BusinessCapteur)cellInfo.Item;
-			int capteurId = businessCapteur.IdCapteur;
-			BusinessReleve businessReleve = new BusinessReleve();
-			businessReleve.CapteurID = capteurId;
 
-			int idReleve = ServiceReleve.AddReleve(businessReleve);
-		
-			List<BusinessLigneReleve> lignesReleve = new List<BusinessLigneReleve>();
-			foreach (var item in listBoxReleve.Items)
-			{
-				string[] list = Regex.Split(item.ToString(), @"\s+");
-
-				BusinessLigneReleve businessLigneReleve = new BusinessLigneReleve();
-				businessLigneReleve.DateLigneReleve = DateTime.Parse(list[1]);
-				businessLigneReleve.HeureLigneReleve = TimeSpan.Parse(list[2]);
-				businessLigneReleve.Temperature = double.Parse(list[3].Replace(".", ","));
-				businessLigneReleve.Hygrometrie = double.Parse(list[4].Remove(list[4].Length - 1).Replace("." , ","));
-				businessLigneReleve.ReleveID = idReleve;
-				lignesReleve.Add(businessLigneReleve);
-
-
-			}
-
-			ServiceLigneReleve.AddLignesReleve(lignesReleve);
-			MessageBox.Show("yeah");
+			var cellCapteur = gridTest.SelectedItem;
+			gridTest.SelectedCells.Clear();
+			//ItemsControl.ItemsSource
+			gridTest.Items.Remove(cellCapteur);
+			/*BusinessCapteur businessCapteur = (BusinessCapteur)cellCapteur.Item;
+			businessCapteur*/
 		}
 
+
+		// Test
 		private void BtnEnleverLigne_Click(object sender, RoutedEventArgs e)
 		{
 			var releveARetirer = gridFromBdd.SelectedItem as BusinessReleve;
@@ -203,6 +200,6 @@ namespace DataReporting
 			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
 		}
 
-		
+
 	}
 }

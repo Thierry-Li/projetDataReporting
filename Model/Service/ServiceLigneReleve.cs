@@ -64,6 +64,7 @@ namespace DataReporting.Model.Service
 			ctx.SaveChanges();
 		}
 
+		//TODO A Faire
 		public static void DeleteLigneReleve(BusinessReleve businessReleve)
 		{
 			dataReportEntities ctx = new dataReportEntities();

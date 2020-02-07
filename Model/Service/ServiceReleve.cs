@@ -18,14 +18,6 @@ namespace DataReporting.Model.Service
 				IdReleve = r.idReleve,
 				CapteurID = r.capteurID,
 				DateReleve = r.dateReleve
-				
-				//Capteur = r.capteur.Select(c => new BusinessCapteur 
-				//{
-				//	IdCapteur = c.idCapteur,
-				//	NumeroSerie = c.numeroSerie,
-				//	Libelle = c.libelle
-				//}).FirstOrDefault()
-
 			}).ToList();
 			return result;
 		}
@@ -69,6 +61,8 @@ namespace DataReporting.Model.Service
 			ctx.SaveChanges();
 			return releve.idReleve;
 		}
+
+		//TODO DeleteReleve
 
 	}
 
