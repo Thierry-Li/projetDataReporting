@@ -90,11 +90,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="dataReportDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dataReportDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -102,8 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Business\BusinessCapteur.cs" />
+    <Compile Include="Model\Business\BusinessLigneReleve.cs" />
     <Compile Include="Model\Business\BusinessReleve.cs" />
     <Compile Include="Model\Data\capteur.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Data\ligneReleve.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Data\Model1.Context.cs">
@@ -126,7 +125,9 @@
     </Compile>
     <Compile Include="Model\Service\CheckIntegrity.cs" />
     <Compile Include="Model\Service\ServiceCapteur.cs" />
+    <Compile Include="Model\Service\ServiceLigneReleve.cs" />
     <Compile Include="Model\Service\ServiceReleve.cs" />
+    <Compile Include="Model\Service\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -144,17 +145,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="dataReportDataSet.xsc">
-      <DependentUpon>dataReportDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="dataReportDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dataReportDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dataReportDataSet.xss">
-      <DependentUpon>dataReportDataSet.xsd</DependentUpon>
-    </None>
     <EntityDeploy Include="Model\Data\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -186,6 +176,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

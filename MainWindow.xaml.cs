@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Windows;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DataReporting
 {
@@ -18,7 +20,36 @@ namespace DataReporting
 		{
 			InitializeComponent();
 			gridTest.ItemsSource = ServiceCapteur.GetCapteur();
-			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
+			gridFromBdd.ItemsSource = ServiceLigneReleve.GetLignesReleve();
+			List<BusinessReleve> Releves= ServiceReleve.GetReleve();
+
+
+			List<int> RowIndexes = new List<int>();
+			var SelectedItemsCount = gridFromBdd.SelectedItems;
+
+			BusinessReleve businessReleve = new BusinessReleve();
+			//var temperature = businessReleve.Temperature.Where(t => selectedItems.Any(selectedItems => t.temperature == selectedItems.temperature));
+
+			//for (int i = 0; i <= SelectedItemsCount; i++)
+			//{
+			//	RowIndexes.Add(gridFromBdd.Items.IndexOf(gridFromBdd.Items[i]));
+			//}
+			//List<float> temperatures = new List<float>();
+			//foreach (int index in RowIndexes)
+			//{
+			//	temperatures.Add(index);
+			//}
+			//float average = temperatures.Average();
+			//moyenneField.AppendText(average.ToString());
+
+			//float AverageTemperature()
+			//{
+			//	foreach (float temperature in temperatures)
+			//	{
+			//
+			//	}
+			//}
+
 		}
 
 		//Import Dossier TXT
@@ -115,9 +146,6 @@ namespace DataReporting
 		*/
 
 
-
-
-
 		//Fonction DELETE
 		private void LoadValue(object sender, EventArgs e)
 		{
@@ -152,7 +180,7 @@ namespace DataReporting
 		private void BtnEnleverLigne_Click(object sender, RoutedEventArgs e)
 		{
 			var releveARetirer = gridFromBdd.SelectedItem as BusinessReleve;
-			ServiceReleve.DeleteReleve(releveARetirer);
+			ServiceLigneReleve.DeleteLigneReleve(releveARetirer);
 			gridFromBdd.ItemsSource = ServiceReleve.GetReleve();
 		}
 	}

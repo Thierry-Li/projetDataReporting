@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataReporting.Model.Business
@@ -7,11 +8,10 @@ namespace DataReporting.Model.Business
     {
         [Key]
         public int IdReleve { get; set; }
-        public DateTime DateReleve { get; set; }
-        public TimeSpan HeureReleve { get; set; }
-        public double Temperature { get; set; }
-        public double Hygrometrie { get; set; }
+        public int CapteurID { get; set; }
         public virtual BusinessCapteur Capteur { get; set; }
+        public virtual List<BusinessLigneReleve> LigneReleves { get; set; }
+
 
     }
 }

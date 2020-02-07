@@ -16,10 +16,8 @@ namespace DataReporting.Model.Service
 			var result = ctx.releve.Select(r => new BusinessReleve
 			{
 				IdReleve = r.idReleve,
-				DateReleve = r.dateReleve,
-				HeureReleve = r.heureReleve,
-				Temperature = r.temperature,
-				Hygrometrie = r.hygrometrie,
+				CapteurID = r.capteurID,
+				
 				//Capteur = r.capteur.Select(c => new BusinessCapteur 
 				//{
 				//	IdCapteur = c.idCapteur,
@@ -30,35 +28,33 @@ namespace DataReporting.Model.Service
 			}).ToList();
 			return result;
 		}
+		//public static List<BusinessReleve> GetReleveWithLigneReleve(BusinessReleve businessReleve)
+		//{
+		//	dataReportEntities ctx = new dataReportEntities();
+		//	var result = (from ligneReleve in ctx.ligneReleve
+		//				  join releve in ctx.releve
+		//				  on ligneReleve.releveID equals releve.idReleve
+		//				  //where m1.FirstName == "KEN"
+		//				  select new BusinessReleve
+		//				  {
+		//					  IdReleve = releve.idReleve,
+		//					  CapteurID = releve.capteurID,
+		//					  LigneReleves = new List<BusinessLigneReleve>().Add(new BusinessLigneReleve//()
+		//					  {
+		//						  IdLigneReleve = ligneReleve.idLigneReleve,
+		//						  DateLigneReleve = ligneReleve.dateReleve,
+		//						  Temperature = ligneReleve.temperature,
+		//						  Hygrometrie = ligneReleve.hygrometrie,
+		//						  HeureLigneReleve = ligneReleve.heureReleve,
+		//						  ReleveID = ligneReleve.releveID
+		//					  })
+		//					  
+		//				  }); ;.ToList();
+		//
+		//	return result;
+		//}
 
-		public static void DeleteReleve(BusinessReleve businessReleve)
-		{
-			dataReportEntities ctx = new dataReportEntities();
-			var releveRecupere = ctx.releve.Where(r => r.idReleve == businessReleve.IdReleve).FirstOrDefault();
-			//var releveRecupere = ctx.capteur.Include("capteur").Where(c => c.idCapteur == businessReleve.IdReleve).FirstOrDefault();
-
-			//ctx.releve.RemoveRange(releveRecupere.releve);
-			ctx.releve.Remove(releveRecupere);
-
-			ctx.SaveChanges();
-		}
-
-		public static releve AddReleve(BusinessReleve businessReleve)
-		{
-			dataReportEntities ctx = new dataReportEntities();
-			var releve = new releve
-			{
-				dateReleve = businessReleve.DateReleve,
-				heureReleve = businessReleve.HeureReleve,
-				temperature = businessReleve.Temperature,
-				hygrometrie = businessReleve.Hygrometrie
-			};
-
-			ctx.releve.Add(releve);
-
-			ctx.SaveChanges();
-			return releve;
-		}
+		
 
 	}
 

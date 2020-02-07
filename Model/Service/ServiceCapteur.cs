@@ -14,21 +14,19 @@ namespace DataReporting.Model.Service
 			{
 				IdCapteur = c.idCapteur,
 				NumeroSerie = c.numeroSerie,
-				Libelle = c.libelle,
-				Releve = c.releve.Select(r => new BusinessReleve 
-				{ 
-					IdReleve = r.idReleve,
-					DateReleve = r.dateReleve,
-					HeureReleve = r.heureReleve,
-					Temperature = r.temperature,
-					Hygrometrie = r.hygrometrie
-				}).FirstOrDefault()
-
+				Libelle = c.libelle
+				//Releve = c.releve.Select(r => new BusinessReleve 
+				//{ 
+				//	IdReleve = r.idReleve,
+				//	DateReleve = r.dateReleve,
+				//	HeureReleve = r.heureReleve,
+				//	Temperature = (float) r.temperature,
+				//	Hygrometrie = (float) r.hygrometrie
+				//}).FirstOrDefault()
 			}).ToList();
 			return result;
 		}
 		
-
 		public static void DeleteCapteur(BusinessCapteur businessCapteur)
 		{
 			dataReportEntities ctx = new dataReportEntities();

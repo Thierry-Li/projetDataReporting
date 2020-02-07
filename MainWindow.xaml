@@ -1,51 +1,54 @@
 ﻿<Window x:Class="DataReporting.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DataReporting"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="740" Width="927.5">
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:DataReporting"
+		mc:Ignorable="d"
+		Title="MainWindow" Height="740" Width="927.5">
 
-    <Grid Margin="0,0,0.5,2.5">
-        <ListBox x:Name="listBoxReleve" HorizontalAlignment="Left" Height="420" Margin="25,100,0,0" VerticalAlignment="Top" Width="335"/>
+	<Grid Margin="0,0,0.5,2.5">
+		<ListBox x:Name="listBoxReleve" HorizontalAlignment="Left" Height="420" Margin="25,100,0,0" VerticalAlignment="Top" Width="335"/>
 
-        <Button x:Name="BtnChargerFichier" Click="ChargerFichier_Click" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="105,35,0,0" VerticalAlignment="Top" Width="135"/>
+		<Button x:Name="BtnChargerFichier" Click="ChargerFichier_Click" Content="CHARGER FICHIER" HorizontalAlignment="Left" Height="51" Margin="105,35,0,0" VerticalAlignment="Top" Width="135"/>
 
-        <Button x:Name="BTNDelete" Click="LoadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="55,545,0,0" VerticalAlignment="Top" Width="135"/>
+		<Button x:Name="BTNDelete" Click="LoadValue" Content="SUPPRIMER" HorizontalAlignment="Left" Height="51" Margin="55,545,0,0" VerticalAlignment="Top" Width="135"/>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="470,432,0,0" VerticalAlignment="Top" Width="240" IsReadOnly="True">
-            <DataGrid.Columns>
-                <!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
-                <DataGridTextColumn Header="Numéro de série" Binding="{Binding NumeroSerie}" Width="Auto" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom de capteur" Binding="{Binding Libelle}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+		<DataGrid AutoGenerateColumns="False" x:Name="gridTest" HorizontalAlignment="Left" Height="200" Margin="470,432,0,0" VerticalAlignment="Top" Width="240" IsReadOnly="True">
+			<DataGrid.Columns>
+				<!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
+				<DataGridTextColumn Header="Numéro de série" Binding="{Binding NumeroSerie}" Width="Auto" ></DataGridTextColumn>
+				<DataGridTextColumn Header="Nom de capteur" Binding="{Binding Libelle}"></DataGridTextColumn>
+			</DataGrid.Columns>
+		</DataGrid>
 
-        <Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="735,477,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
+		<Button x:Name="deleteTest" Content="deleteTest" HorizontalAlignment="Left" Height="40" Margin="735,477,0,0" VerticalAlignment="Top" Width="95" Click="DeleteTest_Click"/>
 
-        <TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="470,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+		<TextBox x:Name="fieldNumero" HorizontalAlignment="Left" Height="35" Margin="470,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
 
-        <TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="600,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+		<TextBox x:Name="fieldLibelle" HorizontalAlignment="Left" Height="35" Margin="600,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
 
-        <Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="735,650,0,0" VerticalAlignment="Top" Width="95" Click="AddTest_click"/>
+		<Button Content="AddTest" HorizontalAlignment="Left" Height="30" Margin="735,650,0,0" VerticalAlignment="Top" Width="95" Click="AddTest_click"/>
 
-        <Button Content="Enregistrer relevé" HorizontalAlignment="Left" Margin="225,545,0,0" VerticalAlignment="Top" Width="115" Height="51" Click="SaveReleveToBDD"/>
+		<Button Content="Enregistrer relevé" HorizontalAlignment="Left" Margin="225,545,0,0" VerticalAlignment="Top" Width="115" Height="51" Click="SaveReleveToBDD"/>
 
-        <DataGrid  AutoGenerateColumns="False" x:Name="gridFromBdd" HorizontalAlignment="Center" Height="270" Margin="368,77,0,0" VerticalAlignment="Center" Width="544" IsReadOnly="True" GridLinesVisibility="None" SelectionMode="Single" >
-            <DataGrid.Columns>
-                <!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
-                <DataGridTextColumn Header="Date" Binding="{Binding DateReleve}" Width="160" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Heure" Binding="{Binding HeureReleve}" Width="80" ></DataGridTextColumn>
-                <DataGridTextColumn Header="température du relevé" Binding="{Binding Temperature}" Width="Auto" ></DataGridTextColumn>
+		<DataGrid  AutoGenerateColumns="False" x:Name="gridFromBdd" HorizontalAlignment="Left" Height="270" Margin="368,77,0,0" VerticalAlignment="Top" Width="544" IsReadOnly="True" GridLinesVisibility="None" >
+			<DataGrid.Columns>
+				<!--<DataGridTextColumn Header="ID" Binding="{Binding IdCapteur}"></DataGridTextColumn>-->
+				<DataGridTextColumn Header="Date" Binding="{Binding DateLigneReleve}" Width="160" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Heure" Binding="{Binding HeureLigneReleve}" Width="80" ></DataGridTextColumn>
+				<DataGridTextColumn Header="température du relevé" Binding="{Binding Temperature}" Width="Auto" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Hygrométrie du relevé" Binding="{Binding Hygrometrie}" Width="Auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Relevé n°" Binding="{Binding ReleveID}" Width="Auto" ></DataGridTextColumn>
                 <!--<DataGridTextColumn Header="Nom de capteur" Binding="{Binding Libelle}" Width="Auto" ></DataGridTextColumn>-->
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        <Button x:Name="BtnGenerer" Content="Generer rapport" HorizontalAlignment="Left" Margin="420,372,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnEnleverLigne"  Content="Enlever ligne du rapport" HorizontalAlignment="Left" Margin="600,372,0,0" VerticalAlignment="Top" Width="75" Click="BtnEnleverLigne_Click"/>
-    </Grid>
+			</DataGrid.Columns>
+		</DataGrid>
+		
+		<Button x:Name="BtnGenerer" Content="Generer rapport" HorizontalAlignment="Left" Margin="420,372,0,0" VerticalAlignment="Top" Width="75"/>
+		<Button x:Name="BtnEnleverLigne"  Content="Enlever ligne du rapport" HorizontalAlignment="Left" Margin="600,372,0,0" VerticalAlignment="Top" Width="75" Click="BtnEnleverLigne_Click"/>
+		<Label x:Name="moyenne" Content="Moyenne : " HorizontalAlignment="Left" Margin="695,369,0,0" VerticalAlignment="Top"/>
+		<TextBox x:Name="moyenneField" HorizontalAlignment="Left" Height="23" Margin="764,372,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+	</Grid>
 
 
 

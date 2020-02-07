@@ -26,6 +26,7 @@ namespace DataReporting.Model.Data
         }
     
         public virtual DbSet<capteur> capteur { get; set; }
+        public virtual DbSet<ligneReleve> ligneReleve { get; set; }
         public virtual DbSet<releve> releve { get; set; }
     }
 }

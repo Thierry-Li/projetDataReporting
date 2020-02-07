@@ -9,7 +9,6 @@
 
 namespace DataReporting.Model.Data
 {
-    using DataReporting.Model.Business;
     using System;
     using System.Collections.Generic;
     
@@ -22,11 +21,10 @@ namespace DataReporting.Model.Data
         }
     
         public int idCapteur { get; set; }
-        public /*Nullable<int>*/ int numeroSerie { get; set; }
+        public int numeroSerie { get; set; }
         public string libelle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<releve> releve { get; set; }
-
     }
 }

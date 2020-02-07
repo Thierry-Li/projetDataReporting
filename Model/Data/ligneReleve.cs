@@ -12,19 +12,15 @@ namespace DataReporting.Model.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class releve
+    public partial class ligneReleve
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public releve()
-        {
-            this.ligneReleve = new HashSet<ligneReleve>();
-        }
+        public int idLigneReleve { get; set; }
+        public System.DateTime dateReleve { get; set; }
+        public System.TimeSpan heureReleve { get; set; }
+        public double temperature { get; set; }
+        public double hygrometrie { get; set; }
+        public int releveID { get; set; }
     
-        public int idReleve { get; set; }
-        public int capteurID { get; set; }
-    
-        public virtual capteur capteur { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ligneReleve> ligneReleve { get; set; }
+        public virtual releve releve { get; set; }
     }
 }
