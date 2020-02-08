@@ -21,31 +21,19 @@ namespace DataReporting.Model.Service
 			}).ToList();
 			return result;
 		}
-		/*public static List<BusinessReleve> GetReleveWithLigneReleve(BusinessReleve businessReleve)
+
+		public static List<BusinessReleve> GetReleveByCapteurId(int capteurID)
 		{
 			dataReportEntities ctx = new dataReportEntities();
-			var result = (from ligneReleve in ctx.ligneReleve
-						  join releve in ctx.releve
-						  on ligneReleve.releveID equals releve.idReleve
-						  //where m1.FirstName == "KEN"
-						  select new BusinessReleve
-						  {
-							  IdReleve = releve.idReleve,
-							  CapteurID = releve.capteurID,
-							  LigneReleves = new List<BusinessLigneReleve>().Add(new BusinessLigneReleve//()
-							  {
-								  IdLigneReleve = ligneReleve.idLigneReleve,
-								  DateLigneReleve = ligneReleve.dateLigneReleve,
-								  Temperature = ligneReleve.temperature,
-								  Hygrometrie = ligneReleve.hygrometrie,
-								  HeureLigneReleve = ligneReleve.heureLigneReleve,
-								  ReleveID = ligneReleve.releveID
-							  })
-							  
-						  }); ;.ToList();
-		
+			var result = ctx.releve.Select(r => new BusinessReleve()
+			{
+				IdReleve = r.idReleve,
+				CapteurID = r.capteurID,
+				DateReleve = r.dateReleve
+			}).Where(releve => releve.CapteurID == capteurID).ToList();
 			return result;
-		}*/
+		}
+
 
 		public static int AddReleve(BusinessReleve businessReleve)
 		{
@@ -62,7 +50,15 @@ namespace DataReporting.Model.Service
 			return releve.idReleve;
 		}
 
-		//TODO DeleteReleve
+		public static void DeleteReleve(BusinessReleve businessReleve)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var LigneReleveRecupere = ctx.ligneReleve.Include("releve").Where(l => l.releveID == businessReleve.IdReleve).ToList();
+			ctx.ligneReleve.RemoveRange(LigneReleveRecupere);
+			ctx.releve.Remove(ctx.releve.Where(r => r.idReleve == businessReleve.IdReleve).FirstOrDefault());
+
+			ctx.SaveChanges();
+		}
 
 	}
 

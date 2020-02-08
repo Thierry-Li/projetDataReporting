@@ -29,19 +29,6 @@ namespace DataReporting.Model.Service
 			
 			return capteur;
 		}
-		
-		//TODO DeleteCapteur qui doit delete les releves associés?
-		
-		public static void DeleteCapteur(BusinessCapteur businessCapteur)
-		{
-			dataReportEntities ctx = new dataReportEntities();
-			var capteurRecupere = ctx.capteur.Include("releve").Where(c => c.idCapteur == businessCapteur.IdCapteur).FirstOrDefault();
-
-			ctx.releve.RemoveRange(capteurRecupere.releve);
-			ctx.capteur.Remove(capteurRecupere);
-
-			ctx.SaveChanges();
-		}
 
 		public static capteur AddCapteur(BusinessCapteur businessCapteur)
 		{
@@ -57,6 +44,18 @@ namespace DataReporting.Model.Service
 			ctx.SaveChanges();
 			return capteur;
 		}
+
+		public static void DeleteCapteur(BusinessCapteur businessCapteur)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var capteurRecupere = ctx.capteur.Include("releve").Where(c => c.idCapteur == businessCapteur.IdCapteur).FirstOrDefault();
+
+			ctx.releve.RemoveRange(capteurRecupere.releve);
+			ctx.capteur.Remove(capteurRecupere);
+
+			ctx.SaveChanges();
+		}
+
 
 	}
 }

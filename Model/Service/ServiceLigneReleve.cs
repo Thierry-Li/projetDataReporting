@@ -69,9 +69,7 @@ namespace DataReporting.Model.Service
 		{
 			dataReportEntities ctx = new dataReportEntities();
 			var releveRecupere = ctx.releve.Where(r => r.idReleve == businessReleve.IdReleve).FirstOrDefault();
-			//var releveRecupere = ctx.capteur.Include("capteur").Where(c => c.idCapteur == businessReleve.IdReleve).FirstOrDefault();
-
-			//ctx.releve.RemoveRange(releveRecupere.releve);
+			
 			ctx.releve.Remove(releveRecupere);
 
 			ctx.SaveChanges();
