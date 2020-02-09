@@ -1,16 +1,16 @@
-﻿using DataReporting.Model.Business;
-using DataReporting.Model.Service;
-using Microsoft.Win32;
-using System;
-using System.Data.SqlClient;
-using System.IO;
-using System.Windows;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Controls;
-using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows;
+
+using DataReporting.Model.Business;
+using DataReporting.Model.Service;
+
+using Microsoft.Win32;
 
 namespace DataReporting
 {
@@ -19,6 +19,7 @@ namespace DataReporting
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -29,9 +30,6 @@ namespace DataReporting
 			gridCapteur.ItemsSource = capteurs;
 			//gridReleve.ItemsSource = ServiceReleve.GetReleve();
 			//gridLigneReleve.ItemsSource = ServiceLigneReleve.GetLignesReleve();
-			
-			
-
 		}
 		
 
@@ -57,26 +55,12 @@ namespace DataReporting
 						string[] lines = File.ReadAllLines(str);
 						foreach (string line in lines)
 						{
-							//CheckIntegrity.CheckLinesIntegrity(line);
 							listBoxReleve.Items.Add(line);
-							//string[] categorieDeReleve = line.Split(' ');
-							//foreach (string champdeReleve in categorieDeReleve)
-							//{
-							//	char indexReleve = champdeReleve[0];
-							//	//string dateTime = Convert.ToDateTime(champdeReleve[1]);
-							//	//TimeSpan timeSpan = TimeSpan.TryParse(champdeReleve[2]);
-							//	BusinessReleve releveAEnregistrer = new BusinessReleve();
-							//	//ReleveAEnregistrer.DateReleve = DateTime.Parse(char.ToString(champdeReleve[1]));
-							//
-							//	releveAEnregistrer.DateReleve = Convert.ToDateTime(champdeReleve[1]);
-							//	//MessageBox.Show(ReleveAEnregistrer.DateReleve.ToString());
-							//};
-
 						}
 					}
-					catch
+					catch (Exception)
 					{
-
+						throw;
 					}
 				}
 			}
@@ -130,7 +114,26 @@ namespace DataReporting
 
 		private void BtnSupprimerLigne(object sender, EventArgs e)
 		{
-			listBoxReleve.Items.RemoveAt(listBoxReleve.SelectedIndex);
+			try
+			{
+				if(listBoxReleve.SelectedItem != null)
+				{
+					MessageBoxResult messageBoxResult = MessageBox.Show("Voulez-vous retirer la ligne selectionnée et ne pas l'enregistrer dans la BDD?", "Supprimer la ligne ?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+					if (messageBoxResult == MessageBoxResult.Yes)
+					{
+						listBoxReleve.Items.Remove(listBoxReleve.SelectedItem);
+					}
+				} else
+				{
+					MessageBox.Show("Aucune ligne n'est sélectionnée.");
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+				
+			};
+
 		}
 
 		private void SaveReleveToBDD(object sender, RoutedEventArgs e)
@@ -163,24 +166,33 @@ namespace DataReporting
 			ServiceLigneReleve.AddLignesReleve(lignesReleve);
 			MessageBox.Show("yeah");
 			listBoxReleve.Items.Clear();
-
+			gridReleve.ItemsSource = ServiceReleve.GetReleveByCapteurId(capteurId);
 		}
+		
 
 		// Capteur
 		private void BtnDeleteCapteur(object sender, RoutedEventArgs e)
 		{
-			var capteurARetirer = gridCapteur.SelectedItem as BusinessCapteur;
-			string messageBoxText = "Voulez-vous supprimer le capteur selectionné?";
-			string caption = "Supprimer ?";
-			MessageBoxButton button = MessageBoxButton.YesNoCancel;
-			MessageBoxImage icon = MessageBoxImage.Question;
-			MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
-
-			if (result == MessageBoxResult.Yes)
+			BusinessCapteur capteurARetirer = gridCapteur.SelectedItem as BusinessCapteur;
+			//string messageBoxText = "Voulez-vous supprimer le capteur selectionné?";
+			//string caption = "Supprimer ?";
+			//MessageBoxButton button = MessageBoxButton.YesNoCancel;
+			//MessageBoxImage icon = MessageBoxImage.Question;
+			//MessageBoxResult messageBoxResult = MessageBox.Show(messageBoxText, caption, button, icon);
+			if (capteurARetirer != null)
 			{
-				ServiceCapteur.DeleteCapteur(capteurARetirer);
-				gridCapteur.ItemsSource = ServiceCapteur.GetCapteur();
+				MessageBoxResult messageBoxResult = MessageBox.Show("Voulez-vous supprimer le capteur selectionné?", "Supprimer ?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+				if (messageBoxResult == MessageBoxResult.Yes)
+				{
+					ServiceCapteur.DeleteCapteur(capteurARetirer);
+					gridCapteur.ItemsSource = ServiceCapteur.GetCapteur();
+				}
 			}
+			else
+			{
+				MessageBox.Show("Aucun capteur n'est sélectionné.");
+			}
+
 			
 		}
 
@@ -191,19 +203,44 @@ namespace DataReporting
 				NumeroSerie = int.Parse(fieldNumero.Text),
 				Libelle = fieldLibelle.Text
 			};
-			ServiceCapteur.AddCapteur(nouveauCapteur);
-			MessageBox.Show("Capteur ajouté");
-			gridCapteur.ItemsSource = ServiceCapteur.GetCapteur();
+
+			if (nouveauCapteur != null)
+			{
+				
+				ServiceCapteur.AddCapteur(nouveauCapteur);
+				MessageBox.Show("Capteur ajouté");
+				gridCapteur.ItemsSource = ServiceCapteur.GetCapteur();
+			}
+			else if (nouveauCapteur == null)
+			{
+				MessageBox.Show("Veuillez ajouter un numéro de capteur et un nom de capteur.");
+			}
+			
 		}
 
 		private void BtnSelectCapteur(object sender, RoutedEventArgs e)
 		{
+			
 			BusinessCapteur businessCapteur = gridCapteur.SelectedItem as BusinessCapteur;
-			int capteurId = businessCapteur.IdCapteur;
-			MessageBox.Show("Capteur selectionné : Affichage liste des relevés du capteur.");
-			gridReleve.ItemsSource = ServiceReleve.GetReleveByCapteurId(capteurId);
-
+			try
+			{
+				if (businessCapteur != null)
+				{
+					int capteurId = businessCapteur.IdCapteur;
+					//MessageBox.Show("Capteur selectionné : Affichage liste des relevés du capteur.");
+					gridReleve.ItemsSource = ServiceReleve.GetReleveByCapteurId(capteurId);
+				}
+				else
+				{
+					MessageBox.Show("Veuillez selectionner un capteur");
+				}
+			} catch (Exception)
+			{
+				throw;
+				//Debug.WriteLine("Exception Message: " + e.Message);
+			};
 		}
+
 		//private void BtnSupprLigneCapteur(object sender, RoutedEventArgs e)
 		//{
 		//
@@ -218,40 +255,120 @@ namespace DataReporting
 		private void BtnSelectReleves(object sender, RoutedEventArgs e)
 		{
 			List<BusinessLigneReleve> releves = new List<BusinessLigneReleve>();
-			foreach (BusinessReleve businessReleve in gridReleve.SelectedItems) 
+			if ( releves != null)
 			{
-				releves.AddRange(ServiceLigneReleve.GetLignesReleveById(businessReleve.IdReleve));
+				foreach (BusinessReleve businessReleve in gridReleve.SelectedItems)
+				{
+					releves.AddRange(ServiceLigneReleve.GetLignesReleveById(businessReleve.IdReleve));
+				}
+				//MessageBox.Show("Relevé(s) selectionné(s) : Affichage liste des Lignes.");
+				gridLigneReleve.ItemsSource = releves;
+			} else
+			{
+				MessageBox.Show("Veuillez selectionner une date de relevé.");
 			}
-			MessageBox.Show("Relevé(s) selectionné(s) : Affichage liste des Lignes.");
-			gridLigneReleve.ItemsSource = releves;
+			
 		}
 
 
 		private void BtnSupprimerReleve(object sender, RoutedEventArgs e)
 		{
-			var refresh = gridReleve.SelectedItem as BusinessReleve;
-			var releveARetirer = gridReleve.SelectedItem as BusinessReleve;
-			string messageBoxText = "Voulez-vous supprimer le revelé selectionné?";
-			string caption = "Supprimer ?";
-			MessageBoxButton button = MessageBoxButton.YesNoCancel;
-			MessageBoxImage icon = MessageBoxImage.Question;
-			MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
-
-			if (result == MessageBoxResult.Yes)
+			BusinessReleve releveARetirer = gridReleve.SelectedItem as BusinessReleve;
+			MessageBoxResult messageBoxResult = MessageBox.Show("Voulez-vous supprimer le revelé selectionné?", "Supprimer ?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+			if (releveARetirer != null)
 			{
-				ServiceReleve.DeleteReleve(releveARetirer);
+				if (messageBoxResult == MessageBoxResult.Yes)
+				{
+					ServiceReleve.DeleteReleve(releveARetirer);
+				}
+				gridLigneReleve.ItemsSource = null;
+				gridReleve.ItemsSource = ServiceReleve.GetReleveByCapteurId(releveARetirer.CapteurID);
 			}
-			gridLigneReleve.ItemsSource = null;
-			gridReleve.ItemsSource = ServiceReleve.GetReleveByCapteurId(releveARetirer.CapteurID);
 		}
 
-		// Test
+
+		// Ligne de Releve
 		private void BtnSupprimerLigneDeReleve(object sender, RoutedEventArgs e)
 		{
-			var releveARetirer = gridLigneReleve.SelectedItem as BusinessReleve;
-			ServiceLigneReleve.DeleteLigneReleve(releveARetirer);
-			gridLigneReleve.ItemsSource = ServiceReleve.GetReleve();
+			BusinessLigneReleve ligneReleveARetirer = gridLigneReleve.SelectedItem as BusinessLigneReleve;
+			MessageBoxResult messageBoxResult = MessageBox.Show("Voulez-vous supprimer la ligne de relevé selectionnée?", "Supprimer ?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+			if (ligneReleveARetirer != null)
+			{
+				if (messageBoxResult == MessageBoxResult.Yes)
+				{
+					ServiceLigneReleve.DeleteLigneReleve(ligneReleveARetirer);
+
+				}
+				gridLigneReleve.ItemsSource = ServiceLigneReleve.GetLignesReleveById(ligneReleveARetirer.ReleveID);
+			}
+		}
+
+
+		// Rapport Synthèse
+		private void BtnGenererRapport(object sender, RoutedEventArgs e)
+		{
+			//IEnumerable ligneReleveContent;
+			//ligneReleveContent = gridLigneReleve.ItemsSource;
+			List<BusinessLigneReleve> ligneReleveContent = new List<BusinessLigneReleve>();
+			ligneReleveContent = gridLigneReleve.ItemsSource as List<BusinessLigneReleve>;
+		
+			List<DateTime> infosDates = new List<DateTime>();
+
+
+			BusinessDataReport businessDataReport = new BusinessDataReport();
+			foreach (BusinessLigneReleve item in ligneReleveContent)
+			{
+				infosDates.Add(item.DateLigneReleve.Add(item.HeureLigneReleve));
+			
+			}
+
+			BusinessTemperature temperature = new BusinessTemperature();
+			temperature.TempMin = ligneReleveContent.Min( ligne => ligne.Temperature);
+			temperature.TempMax = ligneReleveContent.Max(ligne => ligne.Temperature);
+			temperature.TempAvg = ligneReleveContent.Average(ligne => ligne.Temperature);
+
+			businessDataReport.Temperature = temperature;
+
+			BusinessHygrometrie hygrometrie = new BusinessHygrometrie();
+
+			hygrometrie.HygrometrieMin = ligneReleveContent.Min(ligne => ligne.Hygrometrie);
+			hygrometrie.HygrometrieMax = ligneReleveContent.Max(ligne => ligne.Hygrometrie);
+			hygrometrie.HygrometrieAvg = ligneReleveContent.Average(ligne => ligne.Hygrometrie);
+
+			businessDataReport.Hygrometrie = hygrometrie;
+
+			BusinessDateAndTime businessDateAndTime = new BusinessDateAndTime();
+			businessDateAndTime.StartTime = infosDates.Min();
+			businessDateAndTime.EndTime = infosDates.Max();
+			businessDateAndTime.TotalTime = businessDateAndTime.EndTime - businessDateAndTime.StartTime;
+			businessDateAndTime.StorageInterval = infosDates[1] - infosDates[0];
+
+			//TODO ajoiuter champ note et numero 
+			//businessDataReport.Notes();
+
+			businessDataReport.TotalRecords = ligneReleveContent.Count;
+
+			BusinessCapteur businessCapteur = ServiceCapteur.GetCapteurByReleveId(ligneReleveContent[0].ReleveID);
+			businessDataReport.NumeroSerieCapteur = businessCapteur.NumeroSerie;
+
+			//TODO ajouter les champs
 		}
 
 	}
-}
+}/*
+List<BusinessLigneReleve> lignesReleve = new List<BusinessLigneReleve>();
+			foreach (var item in listBoxReleve.Items)
+			{
+				string[] list = Regex.Split(item.ToString(), @"\s+");
+
+BusinessLigneReleve businessLigneReleve = new BusinessLigneReleve
+{
+	DateLigneReleve = DateTime.Parse(list[1]),
+	HeureLigneReleve = TimeSpan.Parse(list[2]),
+	Temperature = double.Parse(list[3].Replace(".", ",")),
+	Hygrometrie = double.Parse(list[4].Remove(list[4].Length - 1).Replace(".", ",")),
+	ReleveID = idReleve
+};
+lignesReleve.Add(businessLigneReleve);
+			}
+			ServiceLigneReleve.AddLignesReleve(lignesReleve);*/

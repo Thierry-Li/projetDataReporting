@@ -29,6 +29,22 @@ namespace DataReporting.Model.Service
 			
 			return capteur;
 		}
+		public static BusinessCapteur GetCapteurByReleveId(int id)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var resultCapteur = (from capteur in ctx.capteur
+								 join releve in ctx.releve on capteur.idCapteur equals releve.capteurID
+								 where releve.idReleve == id
+								 select new BusinessCapteur
+								 {
+									 IdCapteur = capteur.idCapteur,
+									 NumeroSerie = capteur.numeroSerie,
+									 Libelle = capteur.libelle
+								 }).FirstOrDefault();
+
+
+			return resultCapteur;
+		}
 
 		public static capteur AddCapteur(BusinessCapteur businessCapteur)
 		{

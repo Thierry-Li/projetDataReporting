@@ -64,17 +64,14 @@ namespace DataReporting.Model.Service
 			ctx.SaveChanges();
 		}
 
-		//TODO A Faire
-		public static void DeleteLigneReleve(BusinessReleve businessReleve)
+		public static void DeleteLigneReleve(BusinessLigneReleve businessLigneReleve)
 		{
 			dataReportEntities ctx = new dataReportEntities();
-			var releveRecupere = ctx.releve.Where(r => r.idReleve == businessReleve.IdReleve).FirstOrDefault();
-			
-			ctx.releve.Remove(releveRecupere);
+			var ligneReleveRecupere = ctx.ligneReleve.Where(l => l.idLigneReleve == businessLigneReleve.IdLigneReleve).ToList();
 
+			ctx.ligneReleve.RemoveRange(ligneReleveRecupere);
 			ctx.SaveChanges();
 		}
 
-		
 	}
 }

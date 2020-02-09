@@ -1,10 +1,9 @@
-﻿using DataReporting.Model.Business;
-using DataReporting.Model.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using DataReporting.Model.Business;
+using DataReporting.Model.Data;
 
 namespace DataReporting.Model.Service
 {
@@ -21,7 +20,19 @@ namespace DataReporting.Model.Service
 			}).ToList();
 			return result;
 		}
+		public static BusinessReleve GetReleveById(int id)
+		{
+			dataReportEntities ctx = new dataReportEntities();
+			var result = ctx.releve.Select(r => new BusinessReleve
+			{
+				IdReleve = r.idReleve,
+				CapteurID = r.capteurID,
+				DateReleve = r.dateReleve
+			}).Where(releve => releve.IdReleve == id).FirstOrDefault();
+			return result;
+		}
 
+		
 		public static List<BusinessReleve> GetReleveByCapteurId(int capteurID)
 		{
 			dataReportEntities ctx = new dataReportEntities();

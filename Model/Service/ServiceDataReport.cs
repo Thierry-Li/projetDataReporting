@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataReporting.Model.Business;
 
 namespace DataReporting.Model.Service
 {
-	public static class Utils
+	public class ServiceDataReport
 	{
-		public static int CalculeMoyenne()
-		{
 
-			return 0;
-		}
-
+		//public static void (){}
+	
 	}
 }

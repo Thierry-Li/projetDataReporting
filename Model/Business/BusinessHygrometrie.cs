@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataReporting.Model.Business;
 
 namespace DataReporting.Model.Service
 {
-	public static class Utils
+	public class BusinessHygrometrie
 	{
-		public static int CalculeMoyenne()
-		{
+		public double HygrometrieMin { get; set; }
+		public double HygrometrieMax { get; set; }
+		public double HygrometrieAvg { get; set; }
 
-			return 0;
-		}
 
 	}
 }

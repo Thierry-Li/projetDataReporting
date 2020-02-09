@@ -124,9 +124,14 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Service\CheckIntegrity.cs" />
+    <Compile Include="Model\Business\BusinessDataReport.cs" />
+    <Compile Include="Model\Business\BusinessDateAndTime.cs" />
+    <Compile Include="Model\Business\BusinessHygrometrie.cs" />
     <Compile Include="Model\Service\ServiceCapteur.cs" />
+    <Compile Include="Model\Service\ServiceDataReport.cs" />
     <Compile Include="Model\Service\ServiceLigneReleve.cs" />
     <Compile Include="Model\Service\ServiceReleve.cs" />
+    <Compile Include="Model\Business\BusinessTemperature.cs" />
     <Compile Include="Model\Service\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
