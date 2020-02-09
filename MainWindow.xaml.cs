@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -340,8 +341,9 @@ namespace DataReporting
 			BusinessDateAndTime businessDateAndTime = new BusinessDateAndTime();
 			businessDateAndTime.StartTime = infosDates.Min();
 			businessDateAndTime.EndTime = infosDates.Max();
-			businessDateAndTime.TotalTime = businessDateAndTime.EndTime - businessDateAndTime.StartTime;
-			businessDateAndTime.StorageInterval = infosDates[1] - infosDates[0];
+			businessDateAndTime.ElapsedTime = businessDateAndTime.EndTime - businessDateAndTime.StartTime;
+			//businessDateAndTime.StorageInterval = infosDates[1] - infosDates[0];
+			businessDateAndTime.StorageInterval = infosDates[1].Subtract(infosDates[0]);
 
 			//TODO ajoiuter champ note et numero 
 			//businessDataReport.Notes();
@@ -351,6 +353,23 @@ namespace DataReporting
 			BusinessCapteur businessCapteur = ServiceCapteur.GetCapteurByReleveId(ligneReleveContent[0].ReleveID);
 			businessDataReport.NumeroSerieCapteur = businessCapteur.NumeroSerie;
 
+			SNField.Text = businessDataReport.NumeroSerieCapteur.ToString();
+			totalRecordsField.Text = ligneReleveContent.Count.ToString();
+			storageIntervalField.Text = businessDateAndTime.StorageInterval.ToString();
+
+			tempMinField.Text = temperature.TempMin.ToString("0.00");
+			tempMaxField.Text = temperature.TempMax.ToString("0.00");
+			tempAvgField.Text = temperature.TempAvg.ToString("0.00");
+
+			hygroMinField.Text = hygrometrie.HygrometrieMin.ToString();
+			hygroMaxField.Text = hygrometrie.HygrometrieMax.ToString();
+			//hygroAvgField.Text = hygrometrie.HygrometrieAvg.ToString("P", CultureInfo.CreateSpecificCulture("hr-HR"));
+			hygroAvgField.Text = hygrometrie.HygrometrieAvg.ToString("0.00"); 
+			
+
+			startDateField.Text = businessDateAndTime.StartTime.ToString();
+			endDateField.Text = businessDateAndTime.EndTime.ToString();
+			ElapsedDateField.Text = businessDateAndTime.ElapsedTime.ToString(@"ddd\hh\:mm\:ss");
 			//TODO ajouter les champs
 		}
 

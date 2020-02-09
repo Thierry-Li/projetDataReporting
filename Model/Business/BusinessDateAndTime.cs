@@ -12,6 +12,6 @@ namespace DataReporting.Model.Service
 		public DateTime EndTime { get; set; }
 
 		public TimeSpan StorageInterval { get; set; }
-		public TimeSpan TotalTime { get; set; }
+		public TimeSpan ElapsedTime { get; set; }
 	}
 }

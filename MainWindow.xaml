@@ -47,7 +47,7 @@
         <!-- Releve -->
         <DataGrid x:Name="gridReleve" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="100" Margin="545,26,0,0" VerticalAlignment="Top" Width="305" IsReadOnly="True" SelectionUnit="FullRow">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date du relevé" Binding="{Binding DateReleve}" Width="150" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date du relevé" Binding="{Binding DateReleve, StringFormat={}{0:dd.MM.yyyy}}" Width="150" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -58,7 +58,7 @@
         <!-- Ligne Relevé -->
         <DataGrid x:Name="gridLigneReleve" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="270" Margin="370,163,0,0" VerticalAlignment="Top" Width="480" IsReadOnly="True" GridLinesVisibility="None" SelectionUnit="FullRow" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding DateLigneReleve}" Width="150" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding DateLigneReleve, StringFormat={}{0:dd.MM.yyyy}}" Width="150" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Heure" Binding="{Binding HeureLigneReleve}" Width="80" ></DataGridTextColumn>
                 <DataGridTextColumn Header="température du relevé" Binding="{Binding Temperature}" Width="80" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Hygrométrie du relevé" Binding="{Binding Hygrometrie}" Width="80" ></DataGridTextColumn>
@@ -69,15 +69,37 @@
         <Button x:Name="BtnSupprimerLigneReleve"  Content="Supprimer ligne de relevé" HorizontalAlignment="Left" Margin="867,189,0,0" VerticalAlignment="Top" Width="133" Click="BtnSupprimerLigneDeReleve" Height="26"/>
 
         <!-- Rapport de synthèse -->
-        
-        <Label x:Name="moyenne" Content="Moyenne : " HorizontalAlignment="Left" Margin="370,449,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
-        <TextBox x:Name="moyenneField" HorizontalAlignment="Left" Height="23" Margin="444,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
         <Button x:Name="GenererRapport" Content="Generer Rapport" HorizontalAlignment="Left" Height="50" Margin="867,350,0,0" VerticalAlignment="Top" Width="133" Click="BtnGenererRapport"/>
 
+        <Label x:Name="tempMin" Content="Temp min : " HorizontalAlignment="Left" Margin="310,505,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="tempMinField" HorizontalAlignment="Left" Height="23" Margin="405,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="tempMax" Content="Temp min : " HorizontalAlignment="Left" Margin="310,543,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="tempMaxField" HorizontalAlignment="Left" Height="23" Margin="405,543,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="tempAvg" Content="Temp Avg : " HorizontalAlignment="Left" Margin="310,581,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="tempAvgField" HorizontalAlignment="Left" Height="23" Margin="405,581,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
+        <Label x:Name="hygroMin" Content="Hygro min : " HorizontalAlignment="Left" Margin="551,505,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="hygroMinField" HorizontalAlignment="Left" Height="23" Margin="640,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="hygroMax" Content="Hygro min : " HorizontalAlignment="Left" Margin="551,543,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="hygroMaxField" HorizontalAlignment="Left" Height="23" Margin="640,543,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="hygroAvg" Content="Hygro Avg : " HorizontalAlignment="Left" Margin="551,581,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="hygroAvgField" HorizontalAlignment="Left" Height="23" Margin="640,581,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
 
+        <Label x:Name="startDate" Content="Start Date : " HorizontalAlignment="Left" Margin="771,505,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="startDateField" HorizontalAlignment="Left" Height="23" Margin="874,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="endDate" Content="End Date : " HorizontalAlignment="Left" Margin="771,543,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="endDateField" HorizontalAlignment="Left" Height="23" Margin="874,543,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="elapsedDate" Content="Elapsed Date : " HorizontalAlignment="Left" Margin="771,581,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="ElapsedDateField" HorizontalAlignment="Left" Height="23" Margin="874,581,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-
+        <Label x:Name="SN" Content="Serial Number : " HorizontalAlignment="Left" Margin="310,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="SNField" HorizontalAlignment="Left" Height="23" Margin="405,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="totalRecords" Content="Total Records : " HorizontalAlignment="Left" Margin="551,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="totalRecordsField" HorizontalAlignment="Left" Height="23" Margin="640,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="storageInterval" Content="Storage Interval : " HorizontalAlignment="Left" Margin="771,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.232,-1.923"/>
+        <TextBox x:Name="storageIntervalField" HorizontalAlignment="Left" Height="23" Margin="874,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>
