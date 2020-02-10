@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.VisualBasic;
+using Microsoft.Win32;
+using Projet4.Model;
 using Projet4.Model.DATA;
 using System;
 using System.IO;
@@ -16,8 +18,10 @@ namespace Projet4
         public MainWindow()
         {
             InitializeComponent();
-            gridTest.ItemsSource = new DataReportingEntities().Capteur.ToList();//Get Capteur ID from BDD
-            
+            gridTest.ItemsSource = new dataReportEntities1().capteur.ToList();//Get Capteur ID from BDD
+           
+               
+
         }
 
         private void CBTNselect(object sender, EventArgs e)
@@ -70,12 +74,41 @@ namespace Projet4
             string ID = (gridTest.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;//recup de l'ID capteur
             string Sreleve = Model.GetRep.FilePassReleve;//recup du chemin relevé
             Model.GetRep.GlobalIDCapteur = ID;//envois ID vers Global
-
             MessageBox.Show("Capteur : " + ID + "\nReleve : " + Sreleve);
-
+            //Refresh
             Vue.Home home = new Vue.Home();
             home.Show();
             this.Close();
+        }
+
+        private void CBTNcapsup(object sender, RoutedEventArgs e)
+        {
+            var capteurARetirer = gridTest.SelectedItem as BusinessCapteur;
+            ServiceCapteur.DeleteCapteur(capteurARetirer);
+            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+            //Refresh
+            MainWindow mainwindow2 = new MainWindow();
+            this.Close();
+            mainwindow2.Show();
+        }
+
+        private void CBTNcapadd(object sender, RoutedEventArgs e)
+        {
+            string Rtxtns = TXTns.Text;
+            string Rtxtname = TXTname.Text;
+
+            BusinessCapteur nouveauCapteur = new BusinessCapteur
+            {
+                NumeroSerie = int.Parse(Rtxtns),
+                Libelle = Rtxtname
+            };
+            ServiceCapteur.AddCapteur(nouveauCapteur);            
+            gridTest.ItemsSource = ServiceCapteur.GetCapteur();
+            //Refresh
+            MainWindow mainwindow3 = new MainWindow();
+            this.Close();
+            mainwindow3.Show();
+
         }
     }
 }

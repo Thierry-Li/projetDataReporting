@@ -4,23 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet4"
+
+        
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="450" 
         Width="800"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Button Name="BTNconnexion" Width="200" Height="50" Margin="300,350,0,0" Content="VALIDER" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNvalider" />
-        <Button Name="BTNselect" Width="200" Height="50" Margin="300,50,0,0" Content="SELECT" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNselect" />
+        <Button Name="BTNconnexion" Width="100" Height="30" Margin="350,350,0,0" Content="VALIDER" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNvalider" />
+        <Button Name="BTNselect" Width="100" Height="30" Margin="600,350,0,0" Content="SELECT" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNselect" />
+        <Button Name="BTNcapadd" Width="100" Height="30" Margin="95,380,0,0" Content="Ajouter" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CBTNcapadd" />
+        <TextBox Name="TXTname" Width="100" Height="30" Margin="20,330,0,0" TextWrapping="Wrap" Text="Nom du Capteur" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox Name="TXTns" Width="100" Height="30" Margin="180,330,0,0" TextWrapping="Wrap" Text="Numéro de Série" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    
 
+        <Rectangle Fill="Black" Height="450" Width="1" Margin="0,0,175,0" Opacity="5"/>
+        <Rectangle Fill="Black" Height="450" Width="1" Margin="200,0,0,0" Opacity="5"/>
 
-        <DataGrid AutoGenerateColumns="False" Name="gridTest" HorizontalAlignment="Left" Height="380" Margin="20,20,0,0" VerticalAlignment="Top" Width="225" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" IsReadOnly="True" >
-            <DataGrid.Columns>                
-                <DataGridTextColumn Header="ID Capteur" Binding="{Binding ID_Cap}"/> 
-                <DataGridTextColumn Header="Nom Capteur" Binding="{Binding Name}"/>
+        <DataGrid AutoGenerateColumns="False" Name="gridTest" HorizontalAlignment="Left" Height="300" Margin="20,20,0,0" VerticalAlignment="Top" Width="265" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Capteur" Binding="{Binding idCapteur}"/>                
+                <DataGridTextColumn Header="Nom du capteur" Binding="{Binding libelle}"/>
+                <DataGridTextColumn Header="Numéro de série" Binding="{Binding numeroSerie}"/>
             </DataGrid.Columns>
-        </DataGrid>
-        <ListBox Margin="550,25,0,0" Height="380" Width="225" Name="listBox" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+        </DataGrid>       
+        <ListBox Margin="520,25,0,0" Height="300" Width="250" Name="listBox" HorizontalAlignment="Left"   VerticalAlignment="Top" />
 
     </Grid>
     

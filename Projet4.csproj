@@ -182,6 +182,11 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -298,6 +303,9 @@
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -316,9 +324,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\FillTableCapteur.cs" />
-    <Compile Include="Model\GetRep.cs" />
-    <Compile Include="Model\DATA\Capteur.cs">
+    <Compile Include="Model\BusinessCapteur.cs" />
+    <Compile Include="Model\BusinessReleve.cs" />
+    <Compile Include="Model\BusinessLigneReleve.cs" />
+    <Compile Include="Model\GetBox.cs" />
+    <Compile Include="Model\ServiceCapteur.cs" />
+    <Compile Include="Model\DATA\capteur.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DATA\ligneReleve.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DATA\Model1.Context.cs">
@@ -336,6 +350,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\DATA\releve.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetRep.cs" />
     <Compile Include="Vue\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -397,15 +415,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Img\return.png" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\DATA\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\DATA\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -413,18 +430,15 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
     </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.Azure.DocumentDB.2.1.2\build\Microsoft.Azure.DocumentDB.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Azure.DocumentDB.2.1.2\build\Microsoft.Azure.DocumentDB.targets'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
-    <Error Condition="!Exists('packages\Microsoft.Azure.DocumentDB.2.1.2\build\Microsoft.Azure.DocumentDB.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Azure.DocumentDB.2.1.2\build\Microsoft.Azure.DocumentDB.targets'))" />
   </Target>
-  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <Import Project="packages\Microsoft.Azure.DocumentDB.2.1.2\build\Microsoft.Azure.DocumentDB.targets" Condition="Exists('packages\Microsoft.Azure.DocumentDB.2.1.2\build\Microsoft.Azure.DocumentDB.targets')" />
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

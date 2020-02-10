@@ -12,12 +12,19 @@ namespace Projet4.Model.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class Capteur
+    public partial class capteur
     {
-        public int ID_Cap { get; set; }
-        public string Name { get; set; }
-        public int idcapteur { get; set; }
-        public string numeroSerie { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public capteur()
+        {
+            this.releve = new HashSet<releve>();
+        }
+    
+        public int idCapteur { get; set; }
+        public int numeroSerie { get; set; }
         public string libelle { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<releve> releve { get; set; }
     }
 }

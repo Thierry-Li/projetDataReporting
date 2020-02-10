@@ -13,10 +13,10 @@ namespace Projet4.Model.DATA
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataReportingEntities : DbContext
+    public partial class dataReportEntities1 : DbContext
     {
-        public DataReportingEntities()
-            : base("name=DataReportingEntities")
+        public dataReportEntities1()
+            : base("name=dataReportEntities1")
         {
         }
     
@@ -25,6 +25,8 @@ namespace Projet4.Model.DATA
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Capteur> Capteur { get; set; }
+        public virtual DbSet<capteur> capteur { get; set; }
+        public virtual DbSet<ligneReleve> ligneReleve { get; set; }
+        public virtual DbSet<releve> releve { get; set; }
     }
 }

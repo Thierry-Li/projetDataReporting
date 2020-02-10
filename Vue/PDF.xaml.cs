@@ -1,12 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Reflection;
 using System.Windows;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.IO.Packaging;
-using System.Windows.Xps.Packaging;
-using System.Windows.Xps;
+
 
 namespace Projet4.Vue
 {
@@ -15,9 +13,11 @@ namespace Projet4.Vue
     /// </summary>
     public partial class PDF : Window
     {
+        ObservableCollection<KeyValuePair<double, double>> Power = new ObservableCollection<KeyValuePair<double, double>>();
         public PDF()
         {
             InitializeComponent();
+            
             string str = Model.GetRep.FilePassReleve;
 
             string filetxt = File.ReadAllText(str); //recupération du contenue du fichier TXT
@@ -41,8 +41,14 @@ namespace Projet4.Vue
             
 
         }
-        //EXIT BUTTON-----------------------------------------------
-        private void CBTNexit(object sender, RoutedEventArgs e)
+        
+
+
+
+
+
+    //EXIT BUTTON-----------------------------------------------
+    private void CBTNexit(object sender, RoutedEventArgs e)
         {
             Home back = new Home();
             back.Show();
@@ -51,51 +57,9 @@ namespace Projet4.Vue
 
         private void CBTNclick(object sender, EventArgs e)
         {
-
-
-            MemoryStream lMemoryStream = new MemoryStream();
-            Package package = Package.Open(lMemoryStream, FileMode.Create);
-            XpsDocument doc = new XpsDocument(package);
-            XpsDocumentWriter writer = XpsDocument.CreateXpsDocumentWriter(doc);
-            writer.Write(gridgeneral);
-            doc.Close();
-            package.Close();
-
-            /*
-            var pdfXpsDoc = PdfSharp.Xps.XpsModel.XpsDocument.Open(lMemoryStream);
-            PdfSharp.Xps.XpsConverter.Convert(pdfXpsDoc, d.FileName, 0);
-            */
-
-
-
-            /*
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true };
-            {
-                if(sfd.ShowDialog() == true)
-                {
-                    
-                    Document doc = new Document(PageSize.A4.Rotate());
-                    try
-                    {
-                        PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
-                        doc.Open();
-                   
-                 
-                    }
-                    catch(Exception error)
-                    {
-                        MessageBox.Show(error.Message, "Message", MessageBoxButton.OK);
-                    }
-                    finally
-                    {
-                        doc.Close();
-                    }
-                }
-            }
-            */
-
+           
         }
 
-
+    
     }
 }

@@ -4,57 +4,174 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DataReportingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Capteur">
+      <Schema Namespace="dataReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="capteur">
           <Key>
-            <PropertyRef Name="idcapteur" />
+            <PropertyRef Name="idCapteur" />
           </Key>
-          <Property Name="idcapteur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="numeroSerie" Type="varchar" MaxLength="3" />
-          <Property Name="libelle" Type="nvarchar(max)" />
+          <Property Name="idCapteur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroSerie" Type="int" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'DataReporting.dbo.Releve' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
-        <EntityType Name="Releve">
-          <Property Name="idReleve" Type="int" />
-          <Property Name="dateLigne" Type="date" />
-          <Property Name="heureLigne" Type="time" Precision="7" />
-          <Property Name="temperatureLigne" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="hygrometrieLigne" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>-->
-        <EntityContainer Name="DataReportingModelStoreContainer">
-          <EntitySet Name="Capteur" EntityType="Self.Capteur" Schema="dbo" store:Type="Tables" />
+        <EntityType Name="ligneReleve">
+          <Key>
+            <PropertyRef Name="idLigneReleve" />
+          </Key>
+          <Property Name="idLigneReleve" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateReleve" Type="date" Nullable="false" />
+          <Property Name="heureReleve" Type="time" Precision="0" Nullable="false" />
+          <Property Name="temperature" Type="float" Nullable="false" />
+          <Property Name="hygrometrie" Type="float" Nullable="false" />
+          <Property Name="releveID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="releve">
+          <Key>
+            <PropertyRef Name="idReleve" />
+          </Key>
+          <Property Name="idReleve" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="capteurID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_idCapteur_idCapteur">
+          <End Role="capteur" Type="Self.capteur" Multiplicity="1" />
+          <End Role="releve" Type="Self.releve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="capteur">
+              <PropertyRef Name="idCapteur" />
+            </Principal>
+            <Dependent Role="releve">
+              <PropertyRef Name="capteurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idReleve_idReleve">
+          <End Role="releve" Type="Self.releve" Multiplicity="1" />
+          <End Role="ligneReleve" Type="Self.ligneReleve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="releve">
+              <PropertyRef Name="idReleve" />
+            </Principal>
+            <Dependent Role="ligneReleve">
+              <PropertyRef Name="releveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dataReportModelStoreContainer">
+          <EntitySet Name="capteur" EntityType="Self.capteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ligneReleve" EntityType="Self.ligneReleve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="releve" EntityType="Self.releve" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_idCapteur_idCapteur" Association="Self.fk_idCapteur_idCapteur">
+            <End Role="capteur" EntitySet="capteur" />
+            <End Role="releve" EntitySet="releve" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idReleve_idReleve" Association="Self.fk_idReleve_idReleve">
+            <End Role="releve" EntitySet="releve" />
+            <End Role="ligneReleve" EntitySet="ligneReleve" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DataReportingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Capteur">
+      <Schema Namespace="dataReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="capteur">
           <Key>
-            <PropertyRef Name="ID_Cap" />
-            <PropertyRef Name="idcapteur" />
+            <PropertyRef Name="idCapteur" />
           </Key>
-          <Property Name="ID_Cap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="idcapteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="numeroSerie" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idCapteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroSerie" Type="Int32" Nullable="false" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="releve" Relationship="Self.fk_idCapteur_idCapteur" FromRole="capteur" ToRole="releve" />
         </EntityType>
-        <EntityContainer Name="DataReportingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Capteur" EntityType="Self.Capteur" />
+        <EntityType Name="ligneReleve">
+          <Key>
+            <PropertyRef Name="idLigneReleve" />
+          </Key>
+          <Property Name="idLigneReleve" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateReleve" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="heureReleve" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="temperature" Type="Double" Nullable="false" />
+          <Property Name="hygrometrie" Type="Double" Nullable="false" />
+          <Property Name="releveID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="releve" Relationship="Self.fk_idReleve_idReleve" FromRole="ligneReleve" ToRole="releve" />
+        </EntityType>
+        <EntityType Name="releve">
+          <Key>
+            <PropertyRef Name="idReleve" />
+          </Key>
+          <Property Name="idReleve" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="capteurID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="capteur" Relationship="Self.fk_idCapteur_idCapteur" FromRole="releve" ToRole="capteur" />
+          <NavigationProperty Name="ligneReleve" Relationship="Self.fk_idReleve_idReleve" FromRole="releve" ToRole="ligneReleve" />
+        </EntityType>
+        <Association Name="fk_idCapteur_idCapteur">
+          <End Role="capteur" Type="Self.capteur" Multiplicity="1" />
+          <End Role="releve" Type="Self.releve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="capteur">
+              <PropertyRef Name="idCapteur" />
+            </Principal>
+            <Dependent Role="releve">
+              <PropertyRef Name="capteurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idReleve_idReleve">
+          <End Role="releve" Type="Self.releve" Multiplicity="1" />
+          <End Role="ligneReleve" Type="Self.ligneReleve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="releve">
+              <PropertyRef Name="idReleve" />
+            </Principal>
+            <Dependent Role="ligneReleve">
+              <PropertyRef Name="releveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dataReportEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="capteur" EntityType="Self.capteur" />
+          <EntitySet Name="ligneReleve" EntityType="Self.ligneReleve" />
+          <EntitySet Name="releve" EntityType="Self.releve" />
+          <AssociationSet Name="fk_idCapteur_idCapteur" Association="Self.fk_idCapteur_idCapteur">
+            <End Role="capteur" EntitySet="capteur" />
+            <End Role="releve" EntitySet="releve" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idReleve_idReleve" Association="Self.fk_idReleve_idReleve">
+            <End Role="releve" EntitySet="releve" />
+            <End Role="ligneReleve" EntitySet="ligneReleve" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DataReportingModelStoreContainer" CdmEntityContainer="DataReportingEntities">
-          <EntitySetMapping Name="Capteur">
-            <EntityTypeMapping TypeName="DataReportingModel.Capteur">
-              <MappingFragment StoreEntitySet="Capteur">
-                <ScalarProperty Name="libelle" ColumnName="libelle" />
+        <EntityContainerMapping StorageEntityContainer="dataReportModelStoreContainer" CdmEntityContainer="dataReportEntities1">
+          <EntitySetMapping Name="capteur">
+            <EntityTypeMapping TypeName="dataReportModel.capteur">
+              <MappingFragment StoreEntitySet="capteur">
+                <ScalarProperty Name="idCapteur" ColumnName="idCapteur" />
                 <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
-                <ScalarProperty Name="idcapteur" ColumnName="idcapteur" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ligneReleve">
+            <EntityTypeMapping TypeName="dataReportModel.ligneReleve">
+              <MappingFragment StoreEntitySet="ligneReleve">
+                <ScalarProperty Name="idLigneReleve" ColumnName="idLigneReleve" />
+                <ScalarProperty Name="dateReleve" ColumnName="dateReleve" />
+                <ScalarProperty Name="heureReleve" ColumnName="heureReleve" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="hygrometrie" ColumnName="hygrometrie" />
+                <ScalarProperty Name="releveID" ColumnName="releveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="releve">
+            <EntityTypeMapping TypeName="dataReportModel.releve">
+              <MappingFragment StoreEntitySet="releve">
+                <ScalarProperty Name="idReleve" ColumnName="idReleve" />
+                <ScalarProperty Name="capteurID" ColumnName="capteurID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
