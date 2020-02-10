@@ -11,12 +11,6 @@ namespace DataReporting.Model.Service
 
 		public static void CheckLinesIntegrity(string lineOfFile)
 		{
-			
-			
-		}
-/*
-		public static void CheckLinesIntegrity(string lineOfFile)
-		{
 			int counter = 0;
 			string line;
 			string[] comp_array;
@@ -63,8 +57,8 @@ namespace DataReporting.Model.Service
 				// Suspend the screen.  
 				Console.ReadLine();
 			}
-		}*/
-
+		}
 
 	}
+
 }

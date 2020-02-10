@@ -132,7 +132,6 @@
     <Compile Include="Model\Service\ServiceLigneReleve.cs" />
     <Compile Include="Model\Service\ServiceReleve.cs" />
     <Compile Include="Model\Business\BusinessTemperature.cs" />
-    <Compile Include="Model\Service\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -155,6 +154,8 @@
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="Model\Data\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>

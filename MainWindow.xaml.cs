@@ -32,7 +32,7 @@ namespace DataReporting
 			//gridReleve.ItemsSource = ServiceReleve.GetReleve();
 			//gridLigneReleve.ItemsSource = ServiceLigneReleve.GetLignesReleve();
 		}
-		
+
 
 		// Import fichier TXT
 
@@ -242,16 +242,6 @@ namespace DataReporting
 			};
 		}
 
-		//private void BtnSupprLigneCapteur(object sender, RoutedEventArgs e)
-		//{
-		//
-		//	//var cellCapteur = gridCapteur.SelectedItems;
-		//	
-		//	gridCapteur.SelectedItems.Clear();
-		//	/*BusinessCapteur businessCapteur = (BusinessCapteur)cellCapteur.Item;
-		//	businessCapteur*/
-		//}
-
 		// Releve
 		private void BtnSelectReleves(object sender, RoutedEventArgs e)
 		{
@@ -308,34 +298,27 @@ namespace DataReporting
 		// Rapport Synthèse
 		private void BtnGenererRapport(object sender, RoutedEventArgs e)
 		{
-			//IEnumerable ligneReleveContent;
-			//ligneReleveContent = gridLigneReleve.ItemsSource;
 			List<BusinessLigneReleve> ligneReleveContent = new List<BusinessLigneReleve>();
 			ligneReleveContent = gridLigneReleve.ItemsSource as List<BusinessLigneReleve>;
 		
 			List<DateTime> infosDates = new List<DateTime>();
 
-
 			BusinessDataReport businessDataReport = new BusinessDataReport();
 			foreach (BusinessLigneReleve item in ligneReleveContent)
 			{
 				infosDates.Add(item.DateLigneReleve.Add(item.HeureLigneReleve));
-			
 			}
 
 			BusinessTemperature temperature = new BusinessTemperature();
 			temperature.TempMin = ligneReleveContent.Min( ligne => ligne.Temperature);
 			temperature.TempMax = ligneReleveContent.Max(ligne => ligne.Temperature);
 			temperature.TempAvg = ligneReleveContent.Average(ligne => ligne.Temperature);
-
 			businessDataReport.Temperature = temperature;
 
 			BusinessHygrometrie hygrometrie = new BusinessHygrometrie();
-
 			hygrometrie.HygrometrieMin = ligneReleveContent.Min(ligne => ligne.Hygrometrie);
 			hygrometrie.HygrometrieMax = ligneReleveContent.Max(ligne => ligne.Hygrometrie);
 			hygrometrie.HygrometrieAvg = ligneReleveContent.Average(ligne => ligne.Hygrometrie);
-
 			businessDataReport.Hygrometrie = hygrometrie;
 
 			BusinessDateAndTime businessDateAndTime = new BusinessDateAndTime();
@@ -343,15 +326,11 @@ namespace DataReporting
 			businessDateAndTime.EndTime = infosDates.Max();
 			businessDateAndTime.ElapsedTime = businessDateAndTime.EndTime - businessDateAndTime.StartTime;
 			//businessDateAndTime.StorageInterval = infosDates[1] - infosDates[0];
-			businessDateAndTime.StorageInterval = infosDates[1].Subtract(infosDates[0]);
-
-			//TODO ajoiuter champ note et numero 
-			//businessDataReport.Notes();
-
-			businessDataReport.TotalRecords = ligneReleveContent.Count;
-
+			
 			BusinessCapteur businessCapteur = ServiceCapteur.GetCapteurByReleveId(ligneReleveContent[0].ReleveID);
 			businessDataReport.NumeroSerieCapteur = businessCapteur.NumeroSerie;
+			businessDateAndTime.StorageInterval = infosDates[1].Subtract(infosDates[0]);
+			businessDataReport.TotalRecords = ligneReleveContent.Count;
 
 			SNField.Text = businessDataReport.NumeroSerieCapteur.ToString();
 			totalRecordsField.Text = ligneReleveContent.Count.ToString();
@@ -365,29 +344,12 @@ namespace DataReporting
 			hygroMaxField.Text = hygrometrie.HygrometrieMax.ToString();
 			//hygroAvgField.Text = hygrometrie.HygrometrieAvg.ToString("P", CultureInfo.CreateSpecificCulture("hr-HR"));
 			hygroAvgField.Text = hygrometrie.HygrometrieAvg.ToString("0.00"); 
-			
 
 			startDateField.Text = businessDateAndTime.StartTime.ToString();
 			endDateField.Text = businessDateAndTime.EndTime.ToString();
 			ElapsedDateField.Text = businessDateAndTime.ElapsedTime.ToString(@"ddd\hh\:mm\:ss");
-			//TODO ajouter les champs
+
 		}
 
 	}
-}/*
-List<BusinessLigneReleve> lignesReleve = new List<BusinessLigneReleve>();
-			foreach (var item in listBoxReleve.Items)
-			{
-				string[] list = Regex.Split(item.ToString(), @"\s+");
-
-BusinessLigneReleve businessLigneReleve = new BusinessLigneReleve
-{
-	DateLigneReleve = DateTime.Parse(list[1]),
-	HeureLigneReleve = TimeSpan.Parse(list[2]),
-	Temperature = double.Parse(list[3].Replace(".", ",")),
-	Hygrometrie = double.Parse(list[4].Remove(list[4].Length - 1).Replace(".", ",")),
-	ReleveID = idReleve
-};
-lignesReleve.Add(businessLigneReleve);
-			}
-			ServiceLigneReleve.AddLignesReleve(lignesReleve);*/
+}
