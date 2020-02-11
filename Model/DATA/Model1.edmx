@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dataReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dataReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="capteur">
           <Key>
             <PropertyRef Name="idCapteur" />
@@ -18,8 +18,8 @@
             <PropertyRef Name="idLigneReleve" />
           </Key>
           <Property Name="idLigneReleve" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dateReleve" Type="date" Nullable="false" />
-          <Property Name="heureReleve" Type="time" Precision="0" Nullable="false" />
+          <Property Name="dateLigneReleve" Type="date" Nullable="false" />
+          <Property Name="heureLigneReleve" Type="time" Precision="0" Nullable="false" />
           <Property Name="temperature" Type="float" Nullable="false" />
           <Property Name="hygrometrie" Type="float" Nullable="false" />
           <Property Name="releveID" Type="int" Nullable="false" />
@@ -30,6 +30,7 @@
           </Key>
           <Property Name="idReleve" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="capteurID" Type="int" Nullable="false" />
+          <Property Name="dateReleve" Type="date" Nullable="false" />
         </EntityType>
         <Association Name="fk_idCapteur_idCapteur">
           <End Role="capteur" Type="Self.capteur" Multiplicity="1" />
@@ -68,8 +69,7 @@
             <End Role="ligneReleve" EntitySet="ligneReleve" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dataReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -87,12 +87,12 @@
             <PropertyRef Name="idLigneReleve" />
           </Key>
           <Property Name="idLigneReleve" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dateReleve" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="heureReleve" Type="Time" Nullable="false" Precision="0" />
           <Property Name="temperature" Type="Double" Nullable="false" />
           <Property Name="hygrometrie" Type="Double" Nullable="false" />
           <Property Name="releveID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="releve" Relationship="Self.fk_idReleve_idReleve" FromRole="ligneReleve" ToRole="releve" />
+          <Property Name="dateLigneReleve" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="heureLigneReleve" Type="Time" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="releve">
           <Key>
@@ -102,6 +102,7 @@
           <Property Name="capteurID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="capteur" Relationship="Self.fk_idCapteur_idCapteur" FromRole="releve" ToRole="capteur" />
           <NavigationProperty Name="ligneReleve" Relationship="Self.fk_idReleve_idReleve" FromRole="releve" ToRole="ligneReleve" />
+          <Property Name="dateReleve" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <Association Name="fk_idCapteur_idCapteur">
           <End Role="capteur" Type="Self.capteur" Multiplicity="1" />
@@ -127,7 +128,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dataReportEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dataReportEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="capteur" EntityType="Self.capteur" />
           <EntitySet Name="ligneReleve" EntityType="Self.ligneReleve" />
           <EntitySet Name="releve" EntityType="Self.releve" />
@@ -145,7 +146,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dataReportModelStoreContainer" CdmEntityContainer="dataReportEntities1">
+        <EntityContainerMapping StorageEntityContainer="dataReportModelStoreContainer" CdmEntityContainer="dataReportEntities">
           <EntitySetMapping Name="capteur">
             <EntityTypeMapping TypeName="dataReportModel.capteur">
               <MappingFragment StoreEntitySet="capteur">
@@ -158,9 +159,9 @@
           <EntitySetMapping Name="ligneReleve">
             <EntityTypeMapping TypeName="dataReportModel.ligneReleve">
               <MappingFragment StoreEntitySet="ligneReleve">
+                <ScalarProperty Name="heureLigneReleve" ColumnName="heureLigneReleve" />
+                <ScalarProperty Name="dateLigneReleve" ColumnName="dateLigneReleve" />
                 <ScalarProperty Name="idLigneReleve" ColumnName="idLigneReleve" />
-                <ScalarProperty Name="dateReleve" ColumnName="dateReleve" />
-                <ScalarProperty Name="heureReleve" ColumnName="heureReleve" />
                 <ScalarProperty Name="temperature" ColumnName="temperature" />
                 <ScalarProperty Name="hygrometrie" ColumnName="hygrometrie" />
                 <ScalarProperty Name="releveID" ColumnName="releveID" />
@@ -170,6 +171,7 @@
           <EntitySetMapping Name="releve">
             <EntityTypeMapping TypeName="dataReportModel.releve">
               <MappingFragment StoreEntitySet="releve">
+                <ScalarProperty Name="dateReleve" ColumnName="dateReleve" />
                 <ScalarProperty Name="idReleve" ColumnName="idReleve" />
                 <ScalarProperty Name="capteurID" ColumnName="capteurID" />
               </MappingFragment>

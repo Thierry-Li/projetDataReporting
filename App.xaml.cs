@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Projet4
+namespace DataReporting
 {
     /// <summary>
     /// Logique d'interaction pour App.xaml

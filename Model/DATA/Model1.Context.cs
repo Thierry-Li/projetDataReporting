@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projet4.Model.DATA
+namespace DataReporting.Model.Data
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dataReportEntities1 : DbContext
+    public partial class dataReportEntities : DbContext
     {
-        public dataReportEntities1()
-            : base("name=dataReportEntities1")
+        public dataReportEntities()
+            : base("name=dataReportEntities")
         {
         }
     

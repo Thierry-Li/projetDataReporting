@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7539bb48ef5e4ad7bd147e93a3569243" Name="Diagram1">
+      <Diagram DiagramId="556ccab15cf94afc8161961c22bee101" Name="Diagram1" ZoomLevel="150">
         <EntityTypeShape EntityType="dataReportModel.capteur" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dataReportModel.ligneReleve" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataReportModel.ligneReleve" Width="2.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dataReportModel.releve" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="dataReportModel.fk_idCapteur_idCapteur" ManuallyRouted="false" />
         <AssociationConnector Association="dataReportModel.fk_idReleve_idReleve" ManuallyRouted="false" />

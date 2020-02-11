@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projet4.Model.DATA
+namespace DataReporting.Model.Data
 {
     using System;
     using System.Collections.Generic;
