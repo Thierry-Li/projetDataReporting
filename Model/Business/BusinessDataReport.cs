@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +15,6 @@ namespace DataReporting.Model.Service
 
 		public BusinessTemperature Temperature { get; set; }
 		public BusinessHygrometrie Hygrometrie { get; set; }
-		public BusinessDateAndTime DateAndTime { get; set; }
-
-		
-
-
+		public BusinessDateAndTime DateAndTime { get; set; } 
 	}
-
-	
-
 }

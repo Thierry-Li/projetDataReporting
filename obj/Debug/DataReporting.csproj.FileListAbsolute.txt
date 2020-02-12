@@ -59,3 +59,35 @@ Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReport
 \\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\DataReporting.csproj.CopyComplete
 \\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\DataReporting.exe
 \\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\DataReporting.pdb
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.csprojAssemblyReference.cache
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\Mail.g.cs
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\MainWindow.g.cs
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\PDF.g.cs
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\App.g.cs
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting_Content.g.cs
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting_MarkupCompile.cache
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting_MarkupCompile.lref
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.exe
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.pdb
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\DataReporting.exe.config
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\DataReporting.exe
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\DataReporting.pdb
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\AWSSDK.dll
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\EntityFramework.dll
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\EntityFramework.SqlServer.dll
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\Select.HtmlToPdf.dll
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\AWSSDK.pdb
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\EntityFramework.xml
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\EntityFramework.SqlServer.xml
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\Select.HtmlToPdf.xml
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\fr\EntityFramework.resources.dll
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+\\Mac\Home\Documents\Projects\projetDataReporting\bin\Debug\Select.Html.dep
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\App.baml
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\Mail.baml
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\MainWindow.baml
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\PDF.baml
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.g.resources
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.Properties.Resources.resources
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.csproj.GenerateResource.cache
+\\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.csproj.CopyComplete

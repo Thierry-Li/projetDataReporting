@@ -1,15 +1,19 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataReporting.Model.Business;
 
 namespace DataReporting.Model.Service
 {
-	public class ServiceDataReport
+	public static class Utils
 	{
+		public static int CalculeMoyenne()
+		{
 
-		//public static void (){}
-	
+			return 0;
+		}
+
 	}
 }

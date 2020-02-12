@@ -1,4 +1,4 @@
-﻿using DataReporting.Model.Business;
+using DataReporting.Model.Business;
 using DataReporting.Model.Data;
 using System.Collections.Generic;
 using System.Linq;

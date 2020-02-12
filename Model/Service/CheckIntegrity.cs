@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -9,6 +9,12 @@ namespace DataReporting.Model.Service
 	public static class CheckIntegrity
 	{
 
+		public static void CheckLinesIntegrity(string lineOfFile)
+		{
+			
+			
+		}
+/*
 		public static void CheckLinesIntegrity(string lineOfFile)
 		{
 			int counter = 0;
@@ -57,8 +63,8 @@ namespace DataReporting.Model.Service
 				// Suspend the screen.  
 				Console.ReadLine();
 			}
-		}
+		}*/
+
 
 	}
-
 }
