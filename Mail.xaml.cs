@@ -40,7 +40,7 @@ namespace DataReporting
             }
             else
             {
-                MessageBox.Show("Aucun envois, veuillez d'abord creer un PDF");
+                MessageBox.Show("Aucun envoi, veuillez d'abord creer un PDF");
                 MainWindow pdf1 = new MainWindow();
                 pdf1.Show();
                 this.Close();
