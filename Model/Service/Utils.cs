@@ -9,11 +9,7 @@ namespace DataReporting.Model.Service
 {
 	public static class Utils
 	{
-		public static int CalculeMoyenne()
-		{
-
-			return 0;
-		}
+		
 
 	}
 }

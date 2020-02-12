@@ -22,8 +22,10 @@ namespace DataReporting
             if (zone != "")
             {
                 //version1
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-                client.EnableSsl = true;
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    EnableSsl = true
+                };
                 MailAddress adresseMailEnvoyeur = new MailAddress("dta.hardwork@gmail.com");
                 MailAddress Receveur = new MailAddress(TXTTo.Text);
                 MailMessage ConfigMess = new MailMessage(adresseMailEnvoyeur, Receveur);
