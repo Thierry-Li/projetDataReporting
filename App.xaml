@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:DataReporting"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>            
+                <Style TargetType="Button" x:Key="buttonshader">
+                    <Setter Property="Height" Value="10"/>
+                </Style>            
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,12 +33,11 @@ namespace DataReporting.Model.Service
 			var result = ctx.ligneReleve.Select(r => new BusinessLigneReleve()
 			{
 				IdLigneReleve = r.idLigneReleve,
-				HeureLigneReleve = r.heureLigneReleve,
 				Temperature = r.temperature,
 				Hygrometrie = r.hygrometrie,
 				DateLigneReleve = r.dateLigneReleve,
-				ReleveID = r.releveID
-
+				ReleveID = r.releveID,
+				HeureLigneReleve = r.heureLigneReleve
 			}).Where(ligneReleve => ligneReleve.ReleveID == releveId).ToList();
 			return result;
 		}

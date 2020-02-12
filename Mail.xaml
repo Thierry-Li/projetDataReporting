@@ -1,0 +1,15 @@
+﻿<Window x:Class="DataReporting.Mail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataReporting"
+        mc:Ignorable="d"
+        Title="Mail" Height="200" Width="350" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Name="BTNsend" Click="Load" Content="Send" HorizontalAlignment="Left" Height="41" Margin="125,100,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox Name="TXTTo" HorizontalAlignment="Left" Height="40" Margin="50,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+        <Label Content="Pour :" HorizontalAlignment="Left" Height="25" Margin="50,20,0,0" VerticalAlignment="Top" Width="87"/>
+
+    </Grid>
+</Window>

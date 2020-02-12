@@ -97,7 +97,11 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
+<<<<<<< HEAD
 Icon
+=======
+Icon
+>>>>>>> 68ffe98... ajout fonctionnalité csv mail, pdf, mise en forme
 
 # Thumbnails
 ._*
@@ -610,7 +614,11 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
+<<<<<<< HEAD
 Icon
+=======
+Icon
+>>>>>>> 68ffe98... ajout fonctionnalité csv mail, pdf, mise en forme
 
 # Thumbnails
 ._*
