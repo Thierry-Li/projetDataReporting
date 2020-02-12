@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-
 using DataReporting.Model.Business;
 using DataReporting.Model.Service;
-
 using Microsoft.Win32;
 
 namespace DataReporting
@@ -54,7 +49,12 @@ namespace DataReporting
                     try
                     {
                         string[] lines = File.ReadAllLines(str);
-                        listBoxReleve.ItemsSource = lines.ToList();
+                        //listBoxReleve.ItemsSource = lines.ToList();
+                        foreach (string line in lines)
+                        {
+                            listBoxReleve.Items.Add(line);
+                        }
+                       
                     }
                     catch (Exception error)
                     {
@@ -78,6 +78,8 @@ namespace DataReporting
                 {
                     if (MessageBox.Show("Voulez-vous retirer la ligne selectionnée et ne pas l'enregistrer dans la BDD?", "Supprimer la ligne ?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
+                        //var selectedItem = listBoxReleve.SelectedItem;
+                        //listBoxReleve.Items.Remove(selectedItem);
                         listBoxReleve.Items.Remove(listBoxReleve.SelectedItem);
                     }
                 }
@@ -90,7 +92,6 @@ namespace DataReporting
             {
                 MessageBox.Show(error.Message);
             };
-
         }
 
         /// <summary>
@@ -271,29 +272,33 @@ namespace DataReporting
 
             }
 
-            BusinessTemperature temperature = new BusinessTemperature();
-            temperature.TempMin = ligneReleveContent.Min(ligne => ligne.Temperature);
-            temperature.TempMax = ligneReleveContent.Max(ligne => ligne.Temperature);
-            temperature.TempAvg = ligneReleveContent.Average(ligne => ligne.Temperature);
+            BusinessTemperature temperature = new BusinessTemperature
+            {
+                TempMin = ligneReleveContent.Min(ligne => ligne.Temperature),
+                TempMax = ligneReleveContent.Max(ligne => ligne.Temperature),
+                TempAvg = ligneReleveContent.Average(ligne => ligne.Temperature)
+            };
 
             businessDataReport.Temperature = temperature;
 
-            BusinessHygrometrie hygrometrie = new BusinessHygrometrie();
-
-            hygrometrie.HygrometrieMin = ligneReleveContent.Min(ligne => ligne.Hygrometrie);
-            hygrometrie.HygrometrieMax = ligneReleveContent.Max(ligne => ligne.Hygrometrie);
-            hygrometrie.HygrometrieAvg = ligneReleveContent.Average(ligne => ligne.Hygrometrie);
+            BusinessHygrometrie hygrometrie = new BusinessHygrometrie
+            {
+                HygrometrieMin = ligneReleveContent.Min(ligne => ligne.Hygrometrie),
+                HygrometrieMax = ligneReleveContent.Max(ligne => ligne.Hygrometrie),
+                HygrometrieAvg = ligneReleveContent.Average(ligne => ligne.Hygrometrie)
+            };
 
             businessDataReport.Hygrometrie = hygrometrie;
 
-            BusinessDateAndTime businessDateAndTime = new BusinessDateAndTime();
-            businessDateAndTime.StartTime = infosDates.Min();
-            businessDateAndTime.EndTime = infosDates.Max();
+            BusinessDateAndTime businessDateAndTime = new BusinessDateAndTime
+            {
+                StartTime = infosDates.Min(),
+                EndTime = infosDates.Max()
+            };
             businessDateAndTime.ElapsedTime = businessDateAndTime.EndTime - businessDateAndTime.StartTime;
             //businessDateAndTime.StorageInterval = infosDates[1] - infosDates[0];
             businessDateAndTime.StorageInterval = infosDates[1].Subtract(infosDates[0]);
 
-            //TODO ajoiuter champ note et numero 
             //businessDataReport.Notes();
 
             businessDataReport.TotalRecords = ligneReleveContent.Count;
@@ -317,7 +322,6 @@ namespace DataReporting
             string startDateField = businessDateAndTime.StartTime.ToString();
             string endDateField = businessDateAndTime.EndTime.ToString();
             string ElapsedDateField = businessDateAndTime.ElapsedTime.ToString(@"ddd\hh\:mm\:ss");
-            //TODO ajouter les champs
 
             //toGlobal
             SuperGlobal.GlobalSN = SNField;
@@ -367,9 +371,9 @@ namespace DataReporting
                 );
                 csv.Append(newline);
             }
-
+            string fSN = SuperGlobal.GlobalSN;
             //File.WriteAllText(string.Format("C:\\Users\\MSI Game\\TOTO\\{0}.csv", DateTime.Now.ToString("yyyyMMddHms")), csv.ToString(), Encoding.UTF8);
-            File.WriteAllText(string.Format("Y:\\OneDrive - Association Cesi Viacesi mail\\CESI\\projet4-CSHARP\\projetDataReporting\\export\\csv\\{0}.csv", DateTime.Now.ToString("yyyyMMddHms")), csv.ToString(), Encoding.UTF8);
+            File.WriteAllText(string.Format("Y:\\OneDrive - Association Cesi Viacesi mail\\CESI\\projet4-CSHARP\\projetDataReporting\\export\\csv\\{0}{1}.csv", DateTime.Now.ToString("yyyyMMdd-HHmmss-"), fSN), csv.ToString(), Encoding.UTF8);
 
         }
     }

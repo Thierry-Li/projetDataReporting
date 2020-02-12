@@ -91,3 +91,14 @@ Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReport
 \\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.Properties.Resources.resources
 \\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.csproj.GenerateResource.cache
 \\Mac\Home\Documents\Projects\projetDataReporting\obj\Debug\DataReporting.csproj.CopyComplete
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\Mail.g.cs
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\PDF.g.cs
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\bin\Debug\AWSSDK.dll
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\bin\Debug\Select.HtmlToPdf.dll
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\bin\Debug\AWSSDK.pdb
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\bin\Debug\Select.HtmlToPdf.xml
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\bin\Debug\Select.Html.dep
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\App.baml
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\Mail.baml
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\PDF.baml

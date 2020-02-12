@@ -20,31 +20,31 @@ namespace DataReporting
             _listreleve = listreleve;
 
 
-            string fSN = "";
-            string ftotalRecords = "";
-            string fstorageInterval = "";
-            string ftempMin = "";
-            string ftempMax = "";
-            string ftempAvg = "";
-            string fhygroMin = "";
-            string fhygroMax = "";
-            string fhygroAvg = "";
-            string fstartDate = "";
-            string fendDate = "";
-            string fElapsedDate = ""; 
+            //string fSN = "";
+            //string ftotalRecords = "";
+            //string fstorageInterval = "";
+            //string ftempMin = "";
+            //string ftempMax = "";
+            //string ftempAvg = "";
+            //string fhygroMin = "";
+            //string fhygroMax = "";
+            //string fhygroAvg = "";
+            //string fstartDate = "";
+            //string fendDate = "";
+            //string fElapsedDate = ""; 
 
-            fSN = Model.Service.SuperGlobal.GlobalSN;
-            ftotalRecords = Model.Service.SuperGlobal.GlobalTotalRecords;
-            fstorageInterval = Model.Service.SuperGlobal.GlobalStorageInterval;
-            ftempMin = Model.Service.SuperGlobal.GlobalTempMin;
-            ftempMax = Model.Service.SuperGlobal.GlobalTempMax;
-            ftempAvg = Model.Service.SuperGlobal.GlobalTempAVG;
-            fhygroMin = Model.Service.SuperGlobal.GlobalHygroMin;
-            fhygroMax = Model.Service.SuperGlobal.GlobalHygroMax;
-            fhygroAvg = Model.Service.SuperGlobal.GlobalHygroAVG;
-            fstartDate = Model.Service.SuperGlobal.GlobalStartDate;
-            fendDate = Model.Service.SuperGlobal.GlobalEndDate;
-            fElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
+            string fSN = Model.Service.SuperGlobal.GlobalSN;
+            string ftotalRecords = Model.Service.SuperGlobal.GlobalTotalRecords;
+            string fstorageInterval = Model.Service.SuperGlobal.GlobalStorageInterval;
+            string ftempMin = Model.Service.SuperGlobal.GlobalTempMin;
+            string ftempMax = Model.Service.SuperGlobal.GlobalTempMax;
+            string ftempAvg = Model.Service.SuperGlobal.GlobalTempAVG;
+            string fhygroMin = Model.Service.SuperGlobal.GlobalHygroMin;
+            string fhygroMax = Model.Service.SuperGlobal.GlobalHygroMax;
+            string fhygroAvg = Model.Service.SuperGlobal.GlobalHygroAVG;
+            string fstartDate = Model.Service.SuperGlobal.GlobalStartDate;
+            string fendDate = Model.Service.SuperGlobal.GlobalEndDate;
+            string fElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
 
             TXTSN.Text = fSN;
             TXTtotalRecords.Text = ftotalRecords;
@@ -59,9 +59,6 @@ namespace DataReporting
             TXTendDate.Text = fendDate;
             TXTelapsedDate.Text = fElapsedDate;
 
-            
-
-
         }
 
         private void BTNretour(object sender, RoutedEventArgs e)
@@ -74,18 +71,18 @@ namespace DataReporting
         private void BTNsave(object sender, RoutedEventArgs e)
         {
             //recup from global
-            string SN = Model.Service.SuperGlobal.GlobalSN;
-            string totalRecords = Model.Service.SuperGlobal.GlobalTotalRecords;
-            string storageInterval = Model.Service.SuperGlobal.GlobalStorageInterval;
-            string tempMin = Model.Service.SuperGlobal.GlobalTempMin;
-            string tempMax = Model.Service.SuperGlobal.GlobalTempMax;
-            string tempAvg = Model.Service.SuperGlobal.GlobalTempAVG;
-            string hygroMin = Model.Service.SuperGlobal.GlobalHygroMin;
-            string hygroMax = Model.Service.SuperGlobal.GlobalHygroMax;
-            string hygroAvg = Model.Service.SuperGlobal.GlobalHygroAVG;
-            string startDate = Model.Service.SuperGlobal.GlobalStartDate;
-            string endDate = Model.Service.SuperGlobal.GlobalEndDate;
-            string ElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
+            string fSN = Model.Service.SuperGlobal.GlobalSN;
+            string ftotalRecords = Model.Service.SuperGlobal.GlobalTotalRecords;
+            string fstorageInterval = Model.Service.SuperGlobal.GlobalStorageInterval;
+            string ftempMin = Model.Service.SuperGlobal.GlobalTempMin;
+            string ftempMax = Model.Service.SuperGlobal.GlobalTempMax;
+            string ftempAvg = Model.Service.SuperGlobal.GlobalTempAVG;
+            string fhygroMin = Model.Service.SuperGlobal.GlobalHygroMin;
+            string fhygroMax = Model.Service.SuperGlobal.GlobalHygroMax;
+            string fhygroAvg = Model.Service.SuperGlobal.GlobalHygroAVG;
+            string fstartDate = Model.Service.SuperGlobal.GlobalStartDate;
+            string fendDate = Model.Service.SuperGlobal.GlobalEndDate;
+            string fElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
 
 
             //content --------------------------------
@@ -100,18 +97,18 @@ namespace DataReporting
                 "</style>";
             
             content += "<ul>";
-            content += "<li>SN : " +SN+ "</li>";
-            content += "<li>TotalRecords : "+totalRecords+"</li>";
-            content += "<li>storageInterval : "+storageInterval+"</li>";
-            content += "<li>température minimum : "+tempMin+"</li>";
-            content += "<li>température maximum : "+tempMax+"</li>";
-            content += "<li>température moyenne : "+tempAvg+"</li>";
-            content += "<li>Hygrométrie minimum : "+hygroMin+"</li>";
-            content += "<li>Hygrométrie maximum : "+hygroMax+"</li>";
-            content += "<li>Hygrométrie moyenne : "+hygroAvg+"</li>";
-            content += "<li>Date de départ : "+startDate+"</li>";
-            content += "<li>Date de fin : "+endDate+"</li>";
-            content += "<li>Temps écoulé : "+ElapsedDate+"</li>";
+            content += "<li>SN : " +fSN+ "</li>";
+            content += "<li>TotalRecords : "+ftotalRecords+"</li>";
+            content += "<li>storageInterval : "+fstorageInterval+"</li>";
+            content += "<li>température minimum : "+ftempMin+"</li>";
+            content += "<li>température maximum : "+ftempMax+"</li>";
+            content += "<li>température moyenne : "+ftempAvg+"</li>";
+            content += "<li>Hygrométrie minimum : "+fhygroMin+"</li>";
+            content += "<li>Hygrométrie maximum : "+fhygroMax+"</li>";
+            content += "<li>Hygrométrie moyenne : "+fhygroAvg+"</li>";
+            content += "<li>Date de départ : "+fstartDate+"</li>";
+            content += "<li>Date de fin : "+fendDate+"</li>";
+            content += "<li>Temps écoulé : "+fElapsedDate+"</li>";
             content += "</ul>";
             
             content += "<li>----------------------------------------------------------</li>";
@@ -122,7 +119,7 @@ namespace DataReporting
             //content += "<li>----------------------------------------------------------</li>";
             //list
 
-            Model.Service.ServiceDataReport serviceDataReport = new Model.Service.ServiceDataReport();
+            //Model.Service.ServiceDataReport serviceDataReport = new Model.Service.ServiceDataReport();
             
             content += "<ul>";
             int nbline = 1;
@@ -146,8 +143,9 @@ namespace DataReporting
             PdfDocument doc = converter.ConvertHtmlString(content);
 
             //string adress = (string.Format("C:\\Users\\MSI Game\\TOTO\\{0}-{1}.pdf", DateTime.Now.ToString("yyyyMMddHHmmss"), SN));
-            string adress = (string.Format("Y:\\OneDrive - Association Cesi Viacesi mail\\CESI\\projet4 - CSHARP\\projetDataReporting\\export\\pdf\\{0}-{1}.pdf", DateTime.Now.ToString("yyyyMMddHHmmss"), SN));
+            string adress = string.Format("Y:\\OneDrive - Association Cesi Viacesi mail\\CESI\\projet4-CSHARP\\projetDataReporting\\export\\pdf\\{0}{1}.pdf", DateTime.Now.ToString("yyyyMMdd-HHmmss-"), fSN.ToString());
 
+           
             Model.Service.SuperGlobal.GlobalPath = adress;
             // save pdf document
             doc.Save(adress);
@@ -155,6 +153,7 @@ namespace DataReporting
             // close pdf document
             doc.Close();
             MessageBox.Show("PDF crée");
+            
         }
 
         private void BTNmail(object sender, RoutedEventArgs e)
