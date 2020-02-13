@@ -20,31 +20,33 @@ namespace DataReporting
             _listreleve = listreleve;
 
 
-            //string fSN = "";
-            //string ftotalRecords = "";
-            //string fstorageInterval = "";
-            //string ftempMin = "";
-            //string ftempMax = "";
-            //string ftempAvg = "";
-            //string fhygroMin = "";
-            //string fhygroMax = "";
-            //string fhygroAvg = "";
-            //string fstartDate = "";
-            //string fendDate = "";
-            //string fElapsedDate = ""; 
+            string fSN = "";
+            string ftotalRecords = "";
+            string fstorageInterval = "";
+            string ftempMin = "";
+            string ftempMax = "";
+            string ftempAvg = "";
+            string fhygroMin = "";
+            string fhygroMax = "";
+            string fhygroAvg = "";
+            string fstartDate = "";
+            string fendDate = "";
+            string fElapsedDate = ""; 
+            string commentaire = ""; 
 
-            string fSN = Model.Service.SuperGlobal.GlobalSN;
-            string ftotalRecords = Model.Service.SuperGlobal.GlobalTotalRecords;
-            string fstorageInterval = Model.Service.SuperGlobal.GlobalStorageInterval;
-            string ftempMin = Model.Service.SuperGlobal.GlobalTempMin;
-            string ftempMax = Model.Service.SuperGlobal.GlobalTempMax;
-            string ftempAvg = Model.Service.SuperGlobal.GlobalTempAVG;
-            string fhygroMin = Model.Service.SuperGlobal.GlobalHygroMin;
-            string fhygroMax = Model.Service.SuperGlobal.GlobalHygroMax;
-            string fhygroAvg = Model.Service.SuperGlobal.GlobalHygroAVG;
-            string fstartDate = Model.Service.SuperGlobal.GlobalStartDate;
-            string fendDate = Model.Service.SuperGlobal.GlobalEndDate;
-            string fElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
+            fSN = Model.Service.SuperGlobal.GlobalSN;
+            ftotalRecords = Model.Service.SuperGlobal.GlobalTotalRecords;
+            fstorageInterval = Model.Service.SuperGlobal.GlobalStorageInterval;
+            ftempMin = Model.Service.SuperGlobal.GlobalTempMin;
+            ftempMax = Model.Service.SuperGlobal.GlobalTempMax;
+            ftempAvg = Model.Service.SuperGlobal.GlobalTempAVG;
+            fhygroMin = Model.Service.SuperGlobal.GlobalHygroMin;
+            fhygroMax = Model.Service.SuperGlobal.GlobalHygroMax;
+            fhygroAvg = Model.Service.SuperGlobal.GlobalHygroAVG;
+            fstartDate = Model.Service.SuperGlobal.GlobalStartDate;
+            fendDate = Model.Service.SuperGlobal.GlobalEndDate;
+            fElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
+            //commentaire = Model.Service.SuperGlobal.GlobalComm;
 
             TXTSN.Text = fSN;
             TXTtotalRecords.Text = ftotalRecords;
@@ -58,6 +60,7 @@ namespace DataReporting
             TXTstartDate.Text = fstartDate;
             TXTendDate.Text = fendDate;
             TXTelapsedDate.Text = fElapsedDate;
+           
 
         }
 
@@ -83,6 +86,8 @@ namespace DataReporting
             string fstartDate = Model.Service.SuperGlobal.GlobalStartDate;
             string fendDate = Model.Service.SuperGlobal.GlobalEndDate;
             string fElapsedDate = Model.Service.SuperGlobal.GlobalElapsedDate;
+            //string commentaire = Model.Service.SuperGlobal.GlobalComm;
+            string commentaire = TXTcommentaire.Text;
 
 
             //content --------------------------------
@@ -109,6 +114,7 @@ namespace DataReporting
             content += "<li>Date de départ : "+fstartDate+"</li>";
             content += "<li>Date de fin : "+fendDate+"</li>";
             content += "<li>Temps écoulé : "+fElapsedDate+"</li>";
+            content += "<li>Commentaire : "+commentaire+"</li>";
             content += "</ul>";
             
             content += "<li>----------------------------------------------------------</li>";
@@ -165,7 +171,8 @@ namespace DataReporting
 
         private void BTNcomm(object sender, RoutedEventArgs e)
         {
-            
+            Commentaire comm = new Commentaire();
+            comm.Show();
            
             
             

@@ -102,3 +102,5 @@ Y:\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReport
 \\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\App.baml
 \\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\Mail.baml
 \\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\PDF.baml
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\Commentaire.g.cs
+\\Mac\Home\OneDrive - Association Cesi Viacesi mail\CESI\projet4-CSHARP\projetDataReporting\obj\Debug\Commentaire.baml

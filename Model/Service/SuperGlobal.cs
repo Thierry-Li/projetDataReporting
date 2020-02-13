@@ -100,5 +100,13 @@ namespace DataReporting.Model.Service
             get { return v_GlobalPath; }
             set { v_GlobalPath = value; }
         }
+
+        //global Commentaire
+        private static string v_GlobalComm = "";
+        public static string GlobalComm
+        {
+            get { return v_GlobalComm; }
+            set { v_GlobalComm = value; }
+        }
     }
 }

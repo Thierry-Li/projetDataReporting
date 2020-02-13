@@ -17,22 +17,20 @@ namespace DataReporting
 
         private void Load(object sender, EventArgs e)
         {
-            //version1
+       
             string zone = Model.Service.SuperGlobal.GlobalPath;
             if (zone != "")
             {
                 //version1
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
-                {
-                    EnableSsl = true
-                };
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true;
                 MailAddress adresseMailEnvoyeur = new MailAddress("dta.hardwork@gmail.com");
                 MailAddress Receveur = new MailAddress(TXTTo.Text);
                 MailMessage ConfigMess = new MailMessage(adresseMailEnvoyeur, Receveur);
                 Attachment PJ = new Attachment(zone);
                 ConfigMess.Attachments.Add(PJ);
                 ConfigMess.Body = "Voici le rapport PDF en ci joint :";
-                ConfigMess.Subject = "Data Reporting";
+                ConfigMess.Subject = "Data Reporting du " + DateTime.Now.ToString("yyyy/MM/dd");
                 NetworkCredential user = new NetworkCredential("dta.hardwork@gmail.com", "Re7744624");
                 client.Credentials = user;
                 client.Send(ConfigMess);
@@ -42,11 +40,11 @@ namespace DataReporting
             }
             else
             {
-                MessageBox.Show("Aucun envoi, veuillez d'abord creer un PDF");
+                MessageBox.Show("Aucun envois, veuillez d'abord creer un PDF");
                 MainWindow pdf1 = new MainWindow();
                 pdf1.Show();
                 this.Close();
-            }   
+            }
         }
     }
 }

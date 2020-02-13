@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataReporting"
         mc:Ignorable="d"
-        Title="Generer PDF" Height="475" Width="1025" WindowStartupLocation="CenterScreen">
+        Title="Generer PDF" Height="575" Width="1025" WindowStartupLocation="CenterScreen">
     <Grid>
-        
-        <Button Content="RETOUR" HorizontalAlignment="Left" Height="40" Margin="50,375,0,0" VerticalAlignment="Top" Width="146" Click="BTNretour"/>
-        <Button Content="SAVE" HorizontalAlignment="Left" Height="40" Margin="300,375,0,0" VerticalAlignment="Top" Width="146" Click="BTNsave"/>
-        <Button Content="MAIL" HorizontalAlignment="Left" Height="40" Margin="550,375,0,0" VerticalAlignment="Top" Width="146" Click="BTNmail"/>
-        <Button Content="Commentaire" HorizontalAlignment="Left" Height="40" Margin="800,375,0,0" VerticalAlignment="Top" Width="146" Click="BTNcomm"/>
+
+        <Button Content="RETOUR" HorizontalAlignment="Left" Height="40" Margin="154,465,0,0" VerticalAlignment="Top" Width="146" Click="BTNretour"/>
+        <Button Content="ENREGISTRER EN PDF" HorizontalAlignment="Left" Height="40" Margin="425,465,0,0" VerticalAlignment="Top" Width="146" Click="BTNsave"/>
+        <Button Content="ENVOYER PAR MAIL" HorizontalAlignment="Left" Height="40" Margin="729,465,0,0" VerticalAlignment="Top" Width="146" Click="BTNmail"/>
+        <!--<Button Content="Commentaire" HorizontalAlignment="Left" Height="40" Margin="295,465,0,0" VerticalAlignment="Top" Width="146" Click="BTNcomm"/>-->
         <TextBlock Name="TXTSN" HorizontalAlignment="Left" Height="40" Margin="50,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
         <TextBlock Name="TXTtotalRecords" HorizontalAlignment="Left" Height="40" Margin="50,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
         <TextBlock Name="TXTtempMin" HorizontalAlignment="Left" Height="40" Margin="50,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
@@ -36,5 +36,7 @@
         <Label Name="LendDate" Content="Date de fin :" HorizontalAlignment="Left" Height="31" Margin="750,100,0,0" VerticalAlignment="Top" Width="235"/>
         <Label Name="LElapsedDate" Content="Temps écoulé :" HorizontalAlignment="Left" Height="31" Margin="750,180,0,0" VerticalAlignment="Top" Width="235"/>
         <Label Name="LstorageInterval" Content="Interval de stockage :" HorizontalAlignment="Left" Height="31" Margin="750,260,0,0" VerticalAlignment="Top" Width="235"/>
+        <Label Name="Lcommentaire" Content="Commentaire :" HorizontalAlignment="Left" Height="50" Margin="154,365,0,0" VerticalAlignment="Top" Width="130"/>
+        <TextBox Name="TXTcommentaire" HorizontalAlignment="Left" Height="85" Margin="295,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="580"/>
     </Grid>
 </Window>
